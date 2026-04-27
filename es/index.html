@@ -465,8 +465,8 @@
   }
   .modal-close:hover{background:var(--rule);color:var(--ink)}
   .modal-sub{padding:8px 32px 0;font-size:14px;color:var(--ink-dim);line-height:1.5}
-  .modal-form{padding:24px 32px 32px;display:flex;flex-direction:column;gap:16px}
-  .form-field{display:flex;flex-direction:column;gap:5px}
+  .modal-form{padding:24px 32px 32px;display:flex;flex-direction:column;gap:16px;min-width:0}
+  .form-field{display:flex;flex-direction:column;gap:5px;min-width:0}
   .form-field label{font-size:12px;font-weight:600;letter-spacing:.06em;color:var(--ink-dim);text-transform:uppercase}
   .form-field input,
   .form-field textarea,
@@ -475,6 +475,7 @@
     padding:12px 14px;border:1.5px solid var(--rule);border-radius:8px;
     background:var(--bg);outline:none;
     transition:border-color .2s, box-shadow .2s;
+    box-sizing:border-box;width:100%;
   }
   .form-field input:focus,
   .form-field textarea:focus,
