@@ -16,13 +16,29 @@
     display:flex;flex-direction:column;
     position:relative;
   }
-  /* Geometric background shapes */
   .geo{position:absolute;pointer-events:none;z-index:0}
   .geo-1{top:-20px;right:-30px;width:140px;height:140px;border:1.5px solid rgba(200,180,140,.12);transform:rotate(35deg)}
   .geo-2{bottom:120px;left:-40px;width:100px;height:100px;border:1.5px solid rgba(200,180,140,.08);transform:rotate(15deg);border-radius:4px}
   .geo-3{top:42%;right:10px;width:60px;height:60px;background:rgba(200,180,140,.06);transform:rotate(55deg)}
+  /* Top bar with lang toggle + nav */
+  .top-bar{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:10px 16px;position:relative;z-index:2;
+  }
+  .page-nav{display:flex;gap:14px}
+  .page-nav a{font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:rgba(232,228,223,.35);text-decoration:none}
+  .page-nav a.active{color:#c8b48c}
+  .lang-pill{
+    display:flex;background:rgba(255,255,255,.06);border-radius:4px;overflow:hidden;
+  }
+  .lang-pill span{
+    display:flex;align-items:center;justify-content:center;
+    width:26px;height:20px;font-size:7px;letter-spacing:.08em;font-weight:500;
+    color:rgba(232,228,223,.35);
+  }
+  .lang-pill span.on{background:#c8b48c;color:#0c0c0c;font-weight:700}
   .photo{
-    height:46%;position:relative;overflow:hidden;
+    height:38%;position:relative;overflow:hidden;
     background:#080808;z-index:1;
   }
   .photo img{width:100%;height:100%;object-fit:cover;object-position:center 20%;filter:contrast(1.05) saturate(.9)}
@@ -31,11 +47,12 @@
     background:linear-gradient(transparent,#0c0c0c);
   }
   .accent-line{position:absolute;bottom:0;left:22px;width:40px;height:3px;background:#c8b48c;z-index:2}
-  .body{flex:1;padding:16px 22px 20px;display:flex;flex-direction:column;position:relative;z-index:1}
-  .name{font-size:22px;font-weight:700;letter-spacing:-.02em;line-height:1.1}
-  .role{font-size:8px;letter-spacing:.28em;text-transform:uppercase;color:#c8b48c;margin-top:5px}
-  .tagline{font-size:10px;color:rgba(232,228,223,.4);margin-top:10px;line-height:1.5;max-width:24ch}
-  .socials{display:flex;gap:10px;margin-top:12px}
+  .body{flex:1;padding:14px 22px 16px;display:flex;flex-direction:column;position:relative;z-index:1}
+  .name{font-size:20px;font-weight:700;letter-spacing:-.02em;line-height:1.1}
+  .role{font-size:8px;letter-spacing:.28em;text-transform:uppercase;color:#c8b48c;margin-top:4px}
+  .email{font-size:8px;color:rgba(232,228,223,.35);margin-top:6px;letter-spacing:.04em}
+  .tagline{font-size:10px;color:rgba(232,228,223,.4);margin-top:8px;line-height:1.5;max-width:24ch}
+  .socials{display:flex;gap:10px;margin-top:10px}
   .soc{
     font-size:9px;letter-spacing:.1em;text-transform:uppercase;
     color:rgba(232,228,223,.4);cursor:pointer;
@@ -45,7 +62,7 @@
   .soc:hover{color:#c8b48c;border-color:#c8b48c}
   .actions{margin-top:auto;display:flex;flex-direction:column;gap:0}
   .act{
-    font-size:12px;color:#e8e4df;padding:9px 0;
+    font-size:11px;color:#e8e4df;padding:8px 0;
     display:flex;align-items:center;justify-content:space-between;
     border-bottom:1px solid rgba(232,228,223,.08);
     cursor:pointer;transition:color .2s,padding-left .2s;
@@ -59,6 +76,17 @@
   <div class="geo geo-1"></div>
   <div class="geo geo-2"></div>
   <div class="geo geo-3"></div>
+  <div class="top-bar">
+    <div class="page-nav">
+      <a href="#" class="active">Home</a>
+      <a href="#">Portfolio</a>
+      <a href="#">About</a>
+    </div>
+    <div class="lang-pill">
+      <span class="on">EN</span>
+      <span>ES</span>
+    </div>
+  </div>
   <div class="photo">
     <img src="../images/designer-portrait.jpg" alt="Marcus Hale">
     <div class="accent-line"></div>
@@ -66,6 +94,7 @@
   <div class="body">
     <div class="name">Marcus Hale</div>
     <div class="role">Interior Design</div>
+    <div class="email">marcus@halestudio.com</div>
     <div class="tagline">Residential. Commercial. Considered spaces.</div>
     <div class="socials">
       <span class="soc" title="Behance"><svg width="16" height="10" viewBox="0 0 576 512" fill="currentColor"><path d="M232 237.2c31.8-15.2 48.4-38.2 48.4-74 0-70.6-52.6-87.8-113.3-87.8H0v354.4h171.8c64.4 0 124.9-30.9 124.9-102.9 0-44.5-21.1-77.4-64.7-89.7zM77.9 135.9H151c28.1 0 53.4 7.9 53.4 40.5 0 30.1-19.7 42.2-47.5 42.2h-79V135.9zm83.3 233.7H77.9V272h84.9c34.3 0 56 14.3 56 50.6 0 35.8-25.9 47-57.6 47zm358.5-240.7H376V94h143.7v34.9zM576 305.2c0-75.9-44.4-139.2-124.9-139.2-78.2 0-131.3 58.8-131.3 135.8 0 79.9 50.3 134.7 131.3 134.7 61.3 0 101-27.6 120.1-86.3H509c-6.7 21.9-34.3 33.5-55.7 33.5-41.3 0-63-24.2-63-65.3h185.1c.3-4.2.6-8.7.6-13.2zM390.4 274c2.3-33.7 24.7-54.8 58.5-54.8 35.4 0 53.2 20.8 56.2 54.8H390.4z"/></svg></span>

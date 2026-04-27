@@ -72,7 +72,7 @@
   }
   .nav-inner{
     display:flex;align-items:center;justify-content:space-between;
-    padding:18px var(--pad);
+    padding:16px var(--pad);
     max-width:var(--maxw);margin:0 auto;
   }
   .wordmark{
@@ -84,20 +84,37 @@
     color:var(--ink);
   }
   .wordmark img{width:28px;height:28px}
-  .nav-right{display:flex;align-items:center;gap:28px}
-  .lang{display:flex;gap:10px;font-size:11px;letter-spacing:.16em;color:var(--ink-faint)}
-  .lang a.active{color:var(--ink);font-weight:600}
-  .lang a{display:inline-block;min-width:44px;min-height:44px;line-height:44px;text-align:center}
-  .lang a:hover{color:var(--accent)}
-  .nav-cta{
-    font-size:12px;letter-spacing:.14em;text-transform:uppercase;
-    padding:10px 16px;border:1px solid var(--rule-2);
-    color:var(--ink);transition:border-color .25s, color .25s, background .25s;
-  }
-  .nav-cta:hover{border-color:var(--accent);color:var(--accent)}
-
+  .nav-right{display:flex;align-items:center;gap:20px}
   .nav-link{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);transition:color .25s}
   .nav-link:hover{color:var(--accent)}
+  .lang-toggle{
+    display:flex;
+    background:var(--bg-2);
+    border:1px solid var(--rule);
+    border-radius:6px;
+    overflow:hidden;
+  }
+  .lang-toggle a{
+    display:flex;align-items:center;justify-content:center;
+    min-width:40px;min-height:36px;
+    font-size:11px;letter-spacing:.1em;font-weight:500;
+    color:var(--ink-faint);
+    transition:all .2s ease;
+  }
+  .lang-toggle a.active{
+    background:var(--accent);color:#fff;font-weight:600;
+    box-shadow:0 1px 3px rgba(37,99,235,.3);
+  }
+  .lang-toggle a:not(.active):hover{color:var(--ink);background:rgba(0,0,0,.03)}
+  .nav-cta{
+    font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;
+    padding:10px 20px;border-radius:6px;
+    background:var(--accent);color:#fff;
+    transition:background .25s, transform .15s, box-shadow .25s;
+    box-shadow:0 1px 3px rgba(37,99,235,.2);
+  }
+  .nav-cta:hover{background:var(--accent-hover);box-shadow:0 2px 8px rgba(37,99,235,.3)}
+  .nav-cta:active{transform:scale(.97)}
 
   /* HERO */
   .hero{
@@ -196,6 +213,7 @@
   #examples .sec-kicker{color:rgba(203,213,225,.7)}
   #examples .card-label{color:rgba(203,213,225,.6)}
   #examples .card-label .dot{background:var(--accent)}
+  #examples .card-tier{background:rgba(37,99,235,.2);color:rgba(147,197,253,.9)}
 
   #pricing{background:linear-gradient(180deg,var(--bg) 0%,var(--bg-blue) 100%);position:relative}
 
@@ -240,9 +258,16 @@
   .card-frame:hover .cell-frame{transform:scale(.72) translateY(-6px);box-shadow:0 0 0 8px #1c1c1e, 0 0 0 10px #2a2a2d, 0 36px 100px rgba(15,23,42,.5)}
   .card-label{
     font-size:11px;letter-spacing:.18em;text-transform:uppercase;
-    color:var(--ink-faint);display:flex;align-items:center;gap:10px;
+    color:var(--ink-faint);display:flex;flex-direction:column;align-items:center;gap:6px;
   }
+  .card-label .name-row{display:flex;align-items:center;gap:10px}
   .card-label .dot{width:6px;height:6px;border-radius:50%;background:var(--accent)}
+  .card-tier{
+    font-size:9px;letter-spacing:.14em;text-transform:uppercase;
+    padding:3px 10px;border-radius:3px;
+    background:rgba(37,99,235,.12);color:var(--accent);
+    font-weight:600;
+  }
   .cell-frame{
     width:280px;height:606px;
     transform:scale(.72);transform-origin:top center;
@@ -412,10 +437,9 @@
     <nav class="nav-right" aria-label="Primary">
       <a href="#examples" class="nav-link">Work</a>
       <a href="#pricing" class="nav-link">Pricing</a>
-      <div class="lang" aria-label="Language">
+      <div class="lang-toggle" aria-label="Language">
         <a href="./" class="active" aria-current="page">EN</a>
-        <span aria-hidden="true" style="color:var(--ink-faint)">/</span>
-        <a href="../es/" aria-label="Espanol">ES</a>
+        <a href="../es/" aria-label="Español">ES</a>
       </div>
       <a href="#pricing" class="nav-cta">Get your card</a>
     </nav>
@@ -496,22 +520,22 @@
       <div class="examples-row">
 
         <figure class="card-frame reveal">
-          <figcaption class="card-label"><span>Alex Rivera / Realtor</span><span class="dot" aria-hidden="true"></span></figcaption>
+          <figcaption class="card-label"><span class="name-row"><span>Alex Rivera / Realtor</span><span class="dot" aria-hidden="true"></span></span><span class="card-tier">Signature</span></figcaption>
           <iframe class="cell-frame" src="../mockups/realtor.html" title="Alex Rivera — Realtor" loading="lazy"></iframe>
         </figure>
 
         <figure class="card-frame reveal">
-          <figcaption class="card-label"><span>Jamie Chen / Strength Coach</span><span class="dot" aria-hidden="true"></span></figcaption>
+          <figcaption class="card-label"><span class="name-row"><span>Jamie Chen / Strength Coach</span><span class="dot" aria-hidden="true"></span></span><span class="card-tier">Essential</span></figcaption>
           <iframe class="cell-frame" src="../mockups/trainer.html" title="Jamie Chen — Strength Coach" loading="lazy"></iframe>
         </figure>
 
         <figure class="card-frame reveal">
-          <figcaption class="card-label"><span>Sofia Prieto / Makeup &amp; Beauty</span><span class="dot" aria-hidden="true"></span></figcaption>
+          <figcaption class="card-label"><span class="name-row"><span>Sofia Prieto / Makeup &amp; Beauty</span><span class="dot" aria-hidden="true"></span></span><span class="card-tier">Signature</span></figcaption>
           <iframe class="cell-frame" src="../mockups/mua.html" title="Sofia Prieto — Makeup &amp; Beauty" loading="lazy"></iframe>
         </figure>
 
         <figure class="card-frame reveal">
-          <figcaption class="card-label"><span>Marcus Hale / Interior Design</span><span class="dot" aria-hidden="true"></span></figcaption>
+          <figcaption class="card-label"><span class="name-row"><span>Marcus Hale / Interior Design</span><span class="dot" aria-hidden="true"></span></span><span class="card-tier">Premier</span></figcaption>
           <iframe class="cell-frame" src="../mockups/designer.html" title="Marcus Hale — Interior Design" loading="lazy"></iframe>
         </figure>
 
