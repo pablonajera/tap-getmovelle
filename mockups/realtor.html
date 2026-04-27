@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alex Rivera — Realtor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%;overflow:hidden}
+  body{
+    font-family:'Inter',system-ui,sans-serif;
+    background:#0f1a2c;color:#f1ead8;
+    display:flex;flex-direction:column;
+  }
+  .photo{
+    height:44%;position:relative;overflow:hidden;
+    background:#0a1220;
+  }
+  .photo img{width:100%;height:100%;object-fit:cover;object-position:center 20%}
+  .photo::after{
+    content:'';position:absolute;bottom:0;left:0;right:0;height:80px;
+    background:linear-gradient(transparent,#0f1a2c);
+  }
+  .body{
+    flex:1;padding:20px 22px 24px;
+    display:flex;flex-direction:column;
+    text-align:center;
+  }
+  .name{font-family:'Playfair Display',Georgia,serif;font-size:22px;font-weight:500;letter-spacing:-0.01em}
+  .role{font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:#c5a06a;margin-top:5px}
+  .tagline{font-size:11px;color:rgba(241,234,216,.55);margin-top:10px;line-height:1.45}
+  .actions{margin-top:auto;display:grid;grid-template-columns:1fr 1fr;gap:7px}
+  .act{
+    background:rgba(241,234,216,.06);
+    border:1px solid rgba(241,234,216,.12);
+    padding:10px 8px;font-size:9px;letter-spacing:.14em;text-transform:uppercase;
+    color:#f1ead8;border-radius:3px;text-align:center;
+    transition:background .2s;cursor:pointer;
+  }
+  .act:hover{background:rgba(241,234,216,.12)}
+  .act.primary{background:#c5a06a;color:#0f1a2c;border-color:#c5a06a;grid-column:span 2;font-weight:600}
+  .act.primary:hover{background:#d4b07a}
+</style>
+</head>
+<body>
+  <div class="photo">
+    <img src="../images/realtor-portrait.jpg" alt="Alex Rivera">
+  </div>
+  <div class="body">
+    <div class="name">Alex Rivera</div>
+    <div class="role">Licensed Realtor</div>
+    <div class="tagline">Residential &amp; commercial real estate in South Florida</div>
+    <div class="actions">
+      <div class="act primary">Save contact</div>
+      <div class="act">Call</div>
+      <div class="act">Text</div>
+      <div class="act">Listings</div>
+      <div class="act">Book a tour</div>
+    </div>
+  </div>
+</body>
+</html>

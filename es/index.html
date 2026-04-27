@@ -20,18 +20,18 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#f6f3ee;
-    --bg-2:#edeae3;
-    --bg-card:#fff;
-    --ink:#1a1815;
-    --ink-dim:#6b655c;
-    --ink-faint:#7a7568;
-    --rule:#d8d3c9;
-    --rule-2:#c4bfb5;
-    --amber:#b8862d;
-    --amber-hover:#9a6f1e;
-    --amber-text:#8d6820;
-    --amber-bg:#f0e4c8;
+    --bg:#ffffff;
+    --bg-2:#f7f8fa;
+    --bg-card:#ffffff;
+    --ink:#111827;
+    --ink-dim:#4b5563;
+    --ink-faint:#6b7280;
+    --rule:#e5e7eb;
+    --rule-2:#d1d5db;
+    --accent:#2563eb;
+    --accent-hover:#1d4ed8;
+    --accent-text:#1e40af;
+    --accent-bg:#dbeafe;
     --serif:"Fraunces", Georgia, serif;
     --sans:"Inter", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
     --maxw:1200px;
@@ -48,7 +48,7 @@
     text-rendering:optimizeLegibility;
     overflow-x:hidden;
   }
-  ::selection{background:var(--amber);color:#fff}
+  ::selection{background:var(--accent);color:#fff}
   a{color:inherit;text-decoration:none}
   img,svg{display:block;max-width:100%}
   h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-0.01em;margin:0;font-variation-settings:"opsz" 80}
@@ -56,9 +56,10 @@
 
   .wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad)}
 
+  /* NAV */
   .nav{
     position:sticky;top:0;z-index:50;
-    background:rgba(246,243,238,.88);
+    background:rgba(255,255,255,.92);
     backdrop-filter:blur(12px);
     -webkit-backdrop-filter:blur(12px);
     border-bottom:1px solid var(--rule);
@@ -68,169 +69,229 @@
     padding:18px var(--pad);
     max-width:var(--maxw);margin:0 auto;
   }
-  .wordmark{font-family:var(--sans);font-weight:600;font-size:13px;letter-spacing:.18em;color:var(--ink)}
+  .wordmark{
+    font-family:var(--sans);
+    font-weight:600;
+    font-size:13px;
+    letter-spacing:.18em;
+    color:var(--ink);
+  }
   .nav-right{display:flex;align-items:center;gap:28px}
   .lang{display:flex;gap:10px;font-size:11px;letter-spacing:.16em;color:var(--ink-faint)}
   .lang a.active{color:var(--ink);font-weight:600}
   .lang a{display:inline-block;min-width:44px;min-height:44px;line-height:44px;text-align:center}
-  .lang a:hover{color:var(--amber)}
+  .lang a:hover{color:var(--accent)}
   .nav-cta{
     font-size:12px;letter-spacing:.14em;text-transform:uppercase;
     padding:10px 16px;border:1px solid var(--rule-2);
     color:var(--ink);transition:border-color .25s, color .25s, background .25s;
   }
-  .nav-cta:hover{border-color:var(--amber);color:var(--amber)}
+  .nav-cta:hover{border-color:var(--accent);color:var(--accent)}
 
+  /* HERO */
   .hero{padding:96px 0 120px;position:relative}
   .eyebrow{
     font-size:11px;letter-spacing:.22em;text-transform:uppercase;
-    color:var(--amber-text);margin-bottom:36px;
+    color:var(--accent-text);margin-bottom:36px;
     display:inline-flex;align-items:center;gap:14px;
   }
-  .eyebrow::before{content:"";display:inline-block;width:24px;height:1px;background:var(--amber)}
+  .eyebrow::before{
+    content:"";display:inline-block;width:24px;height:1px;background:var(--accent);
+  }
   .h-display{
     font-size:clamp(40px, 7.2vw, 96px);
-    line-height:1.02;letter-spacing:-0.025em;font-weight:300;
-    max-width:14ch;font-variation-settings:"opsz" 144;
+    line-height:1.02;
+    letter-spacing:-0.025em;
+    font-weight:300;
+    max-width:14ch;
+    font-variation-settings:"opsz" 144;
   }
-  .h-display em{font-style:italic;color:var(--amber);font-weight:400}
-  .hero-sub{margin-top:32px;max-width:54ch;font-size:clamp(15px, 1.4vw, 18px);line-height:1.6;color:var(--ink-dim)}
+  .h-display em{
+    font-style:italic;
+    color:var(--accent);
+    font-weight:400;
+  }
+  .hero-sub{
+    margin-top:32px;
+    max-width:54ch;
+    font-size:clamp(15px, 1.4vw, 18px);
+    line-height:1.6;
+    color:var(--ink-dim);
+  }
   .hero-sub i{color:var(--ink);font-style:italic;font-family:var(--serif);font-weight:400}
   .hero-ctas{margin-top:44px;display:flex;flex-wrap:wrap;gap:14px;align-items:center}
   .btn{
     display:inline-flex;align-items:center;gap:10px;
-    padding:16px 26px;font-size:13px;letter-spacing:.12em;text-transform:uppercase;
-    border:1px solid transparent;transition:transform .25s ease, background .25s, color .25s, border-color .25s;
+    padding:16px 26px;
+    font-size:13px;letter-spacing:.12em;text-transform:uppercase;
+    border:1px solid transparent;
+    transition:transform .25s ease, background .25s, color .25s, border-color .25s;
   }
-  .btn-primary{background:var(--amber);color:#fff;font-weight:500}
-  .btn-primary:hover{background:var(--amber-hover)}
+  .btn-primary{background:var(--accent);color:#fff;font-weight:500}
+  .btn-primary:hover{background:var(--accent-hover)}
   .btn-ghost{border-color:var(--rule-2);color:var(--ink)}
-  .btn-ghost:hover{border-color:var(--amber);color:var(--amber)}
+  .btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
   .btn .arr{font-family:var(--serif);font-style:italic;font-size:16px;letter-spacing:0;text-transform:none}
 
   .hero-meta{
-    margin-top:88px;display:grid;grid-template-columns:repeat(3, 1fr);gap:48px;
-    border-top:1px solid var(--rule);padding-top:32px;
+    margin-top:88px;
+    display:grid;grid-template-columns:repeat(3, 1fr);gap:48px;
+    border-top:1px solid var(--rule);
+    padding-top:32px;
   }
   .meta-item .k{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:10px}
   .meta-item .v{font-family:var(--serif);font-size:22px;line-height:1.2;color:var(--ink)}
 
+  /* SECTIONS */
   section{padding:120px 0;border-top:1px solid var(--rule)}
   .sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:24px;margin-bottom:64px;flex-wrap:wrap}
-  .sec-num{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--amber-text)}
-  .sec-title{font-size:clamp(32px, 4.8vw, 56px);line-height:1.05;letter-spacing:-0.02em;font-weight:300;max-width:16ch}
+  .sec-num{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent-text)}
+  .sec-title{
+    font-size:clamp(32px, 4.8vw, 56px);
+    line-height:1.05;
+    letter-spacing:-0.02em;
+    font-weight:300;
+    max-width:16ch;
+  }
   .sec-kicker{color:var(--ink-dim);max-width:42ch;font-size:15px}
 
+  /* HOW IT WORKS */
   .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--rule)}
-  .step{padding:48px 32px 56px;border-right:1px solid var(--rule);position:relative;transition:background .4s ease}
+  .step{
+    padding:48px 32px 56px;
+    border-right:1px solid var(--rule);
+    position:relative;
+    transition:background .4s ease;
+  }
   .step:last-child{border-right:none}
   .step:hover{background:var(--bg-2)}
-  .step-num{font-family:var(--serif);font-style:italic;font-weight:300;font-size:64px;line-height:1;color:var(--amber);margin-bottom:32px}
+  .step-num{
+    font-family:var(--serif);font-style:italic;font-weight:300;
+    font-size:64px;line-height:1;color:var(--accent);
+    margin-bottom:32px;
+  }
   .step h3{font-size:22px;margin-bottom:14px;letter-spacing:-0.01em}
   .step p{color:var(--ink-dim);font-size:15px;max-width:32ch}
 
-  .examples-row{display:grid;grid-template-columns:repeat(2, 1fr);gap:32px}
-  .card-frame{background:var(--bg-card);border:1px solid var(--rule);padding:36px;position:relative;transition:border-color .3s, transform .4s ease}
-  .card-frame:hover{border-color:var(--rule-2);transform:translateY(-4px)}
-  .card-label{display:flex;justify-content:space-between;align-items:center;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:24px}
-  .card-label .dot{width:6px;height:6px;border-radius:50%;background:var(--amber)}
-  .phone{margin:0 auto;width:100%;max-width:280px;aspect-ratio:9/19;border-radius:34px;padding:14px;background:#1a1815;border:1px solid #2a2720;box-shadow:0 30px 80px rgba(0,0,0,.15), inset 0 0 0 1px rgba(255,255,255,.04)}
-  .phone-screen{width:100%;height:100%;border-radius:24px;overflow:hidden;display:flex;flex-direction:column;position:relative}
+  /* EXAMPLES */
+  .examples-row{
+    display:grid;grid-template-columns:repeat(2, 1fr);gap:48px 32px;
+  }
+  .card-frame{
+    display:flex;flex-direction:column;align-items:center;gap:16px;
+  }
+  .card-frame:hover .cell-frame{transform:scale(.72) translateY(-6px);box-shadow:0 0 0 8px #1c1c1e, 0 0 0 10px #2a2a2d, 0 36px 100px rgba(0,0,0,.35)}
+  .card-label{
+    font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--ink-faint);display:flex;align-items:center;gap:10px;
+  }
+  .card-label .dot{width:6px;height:6px;border-radius:50%;background:var(--accent)}
+  .cell-frame{
+    width:280px;height:606px;
+    transform:scale(.72);transform-origin:top center;
+    margin-bottom:-170px;
+    border:0;border-radius:40px;
+    box-shadow:0 0 0 8px #1c1c1e, 0 0 0 10px #2a2a2d, 0 30px 80px rgba(0,0,0,.2);
+    background:#0b0c0f;overflow:hidden;
+    transition:box-shadow 320ms ease, transform 200ms ease;
+  }
 
-  .mock-realtor{background:#0f1a2c;color:#f1ead8}
-  .mock-realtor .mock-photo{height:46%;background:radial-gradient(120% 60% at 50% 0%, #1c2a44 0%, #0f1a2c 70%);position:relative;display:flex;align-items:flex-end;justify-content:center;padding-bottom:18px}
-  .mock-realtor .avatar{width:84px;height:84px;border-radius:50%;background:linear-gradient(135deg,#c5a06a,#8a6a3c);border:2px solid #f1ead8;position:absolute;bottom:-42px;left:50%;transform:translateX(-50%)}
-  .mock-realtor .mock-body{padding:54px 18px 18px;text-align:center;flex:1;display:flex;flex-direction:column}
-  .mock-realtor .mock-name{font-family:var(--serif);font-size:18px;letter-spacing:-0.01em;font-weight:500}
-  .mock-realtor .mock-role{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:#c5a06a;margin-top:4px}
-  .mock-realtor .mock-actions{margin-top:auto;display:grid;grid-template-columns:1fr 1fr;gap:6px}
-  .mock-realtor .act{background:rgba(241,234,216,.08);border:1px solid rgba(241,234,216,.15);padding:8px 6px;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#f1ead8;border-radius:2px;text-align:center}
-  .mock-realtor .act.gold{background:#c5a06a;color:#0f1a2c;border-color:#c5a06a;grid-column:span 2}
 
-  .mock-trainer{background:#1a1a1a;color:#fff}
-  .mock-trainer .mock-photo{height:46%;background:#0e0e0e;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
-  .mock-trainer .mock-photo img{width:100%;height:100%;object-fit:cover;filter:saturate(.85) contrast(1.05)}
-  .mock-trainer .lime-bar{position:absolute;bottom:0;left:0;right:0;height:4px;background:#c8ff00}
-  .mock-trainer .mock-body{padding:18px;flex:1;display:flex;flex-direction:column}
-  .mock-trainer .mock-name{font-family:var(--sans);font-size:18px;font-weight:600;letter-spacing:-0.01em}
-  .mock-trainer .mock-role{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:#c8ff00;margin-top:4px}
-  .mock-trainer .stats{display:flex;gap:12px;margin-top:14px;font-size:10px;color:rgba(255,255,255,.6)}
-  .mock-trainer .stats span b{color:#fff;display:block;font-size:14px;font-family:var(--serif);font-weight:500}
-  .mock-trainer .mock-actions{margin-top:auto;display:flex;flex-direction:column;gap:6px}
-  .mock-trainer .act{background:transparent;border:1px solid rgba(255,255,255,.18);padding:9px;font-size:9px;letter-spacing:.16em;text-transform:uppercase;text-align:center;border-radius:2px}
-  .mock-trainer .act.lime{background:#c8ff00;color:#0a0a0a;border-color:#c8ff00;font-weight:600}
-
-  .mock-mua{background:#f4dcd6;color:#1a1a1a}
-  .mock-mua .mock-photo{height:42%;display:grid;grid-template-columns:1fr 1fr 1fr;grid-template-rows:1fr 1fr;gap:3px;padding:8px}
-  .mock-mua .swatch{border-radius:2px}
-  .mock-mua .sw1{background:#1a1a1a}.mock-mua .sw2{background:#d4b88c}.mock-mua .sw3{background:#f4dcd6;border:1px solid rgba(26,26,26,.1)}.mock-mua .sw4{background:#d4b88c}.mock-mua .sw5{background:#1a1a1a}.mock-mua .sw6{background:#e8c4ba}
-  .mock-mua .mock-body{padding:16px;flex:1;display:flex;flex-direction:column;text-align:center}
-  .mock-mua .mock-name{font-family:var(--sans);font-size:17px;font-weight:600;letter-spacing:.04em}
-  .mock-mua .mock-role{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:#8a6b5e;margin-top:4px}
-  .mock-mua .mock-actions{margin-top:auto;display:grid;grid-template-columns:1fr 1fr;gap:5px}
-  .mock-mua .act{border:1px solid rgba(26,26,26,.2);padding:8px 6px;font-size:9px;letter-spacing:.12em;text-transform:uppercase;border-radius:20px;text-align:center;background:transparent}
-  .mock-mua .act.champ{background:#1a1a1a;color:#f4dcd6;border-color:#1a1a1a;grid-column:span 2;border-radius:20px}
-
-  .mock-designer{background:#f7f3ec;color:#0a0a0a}
-  .mock-designer .mock-photo{height:46%;display:flex;overflow:hidden}
-  .mock-designer .block-left{width:55%;background:#b95a3c}
-  .mock-designer .block-right{width:45%;background:#0a0a0a}
-  .mock-designer .mock-body{padding:16px;flex:1;display:flex;flex-direction:column}
-  .mock-designer .mock-name{font-family:var(--serif);font-size:18px;font-weight:400;letter-spacing:-0.01em}
-  .mock-designer .mock-role{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:#b95a3c;margin-top:4px}
-  .mock-designer .mock-tag{margin-top:12px;font-size:11px;color:#6b655c;line-height:1.4}
-  .mock-designer .mock-actions{margin-top:auto;display:flex;flex-direction:column;gap:5px}
-  .mock-designer .act{font-size:12px;color:#0a0a0a;padding:6px 0;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(10,10,10,.1)}
-  .mock-designer .act .act-arr{color:#b95a3c;font-family:var(--serif);font-style:italic}
-
-  .pricing-grid{display:grid;grid-template-columns:repeat(3, 1fr);gap:0;border-top:1px solid var(--rule);border-left:1px solid var(--rule)}
-  .price{border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:48px 36px 56px;display:flex;flex-direction:column;position:relative;background:var(--bg-card);transition:background .4s ease}
+  /* PRICING */
+  .pricing-grid{
+    display:grid;grid-template-columns:repeat(3, 1fr);gap:0;
+    border-top:1px solid var(--rule);border-left:1px solid var(--rule);
+  }
+  .price{
+    border-right:1px solid var(--rule);
+    border-bottom:1px solid var(--rule);
+    padding:48px 36px 56px;
+    display:flex;flex-direction:column;
+    position:relative;
+    background:var(--bg-card);
+    transition:background .4s ease;
+  }
   .price:hover{background:var(--bg-2)}
   .price.featured{background:var(--ink);color:var(--bg)}
-  .price.featured:hover{background:#2a2720}
+  .price.featured:hover{background:#1f2937}
   .price.featured .tier{color:var(--bg)}
   .price.featured .setup .num{color:var(--bg)}
   .price.featured .setup .lbl{color:var(--ink-faint)}
   .price.featured .setup{border-bottom-color:rgba(255,255,255,.12)}
-  .price.featured li{color:rgba(246,243,238,.65)}
-  .price.featured li::before{background:var(--amber)}
-  .price .pop{position:absolute;top:-1px;left:-1px;right:-1px;background:var(--amber);color:#fff;font-size:10px;letter-spacing:.2em;text-transform:uppercase;font-weight:500;padding:8px 12px;text-align:center;display:flex;align-items:center;justify-content:center;gap:8px}
+  .price.featured li{color:rgba(255,255,255,.65)}
+  .price.featured li::before{background:var(--accent)}
+  .price .pop{
+    position:absolute;top:-1px;left:-1px;right:-1px;
+    background:var(--accent);color:#fff;
+    font-size:10px;letter-spacing:.2em;text-transform:uppercase;font-weight:500;
+    padding:8px 12px;text-align:center;
+    display:flex;align-items:center;justify-content:center;gap:8px;
+  }
   .price .tier{font-family:var(--serif);font-size:28px;letter-spacing:-0.01em;margin-bottom:8px;font-weight:400}
   .price.featured{padding-top:64px}
-  .price .setup{margin-top:8px;display:flex;align-items:baseline;gap:8px;padding-bottom:24px;border-bottom:1px solid var(--rule)}
+  .price .setup{
+    margin-top:8px;display:flex;align-items:baseline;gap:8px;
+    padding-bottom:24px;border-bottom:1px solid var(--rule);
+  }
   .price .setup .num{font-family:var(--serif);font-size:48px;line-height:1;font-weight:300;color:var(--ink)}
   .price .setup .lbl{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint)}
   .price ul{list-style:none;padding:0;margin:24px 0 32px;display:flex;flex-direction:column;gap:14px;flex:1}
   .price li{font-size:14px;line-height:1.5;color:var(--ink-dim);padding-left:20px;position:relative}
-  .price li::before{content:"";position:absolute;left:0;top:8px;width:8px;height:1px;background:var(--amber)}
-  .price .price-cta{margin-top:auto;display:inline-block;text-align:center;padding:14px;border:1px solid var(--rule-2);font-size:12px;letter-spacing:.14em;text-transform:uppercase;transition:border-color .25s, color .25s, background .25s;color:var(--ink)}
-  .price .price-cta:hover{border-color:var(--amber);color:var(--amber)}
-  .price.featured .price-cta{background:var(--amber);color:#fff;border-color:var(--amber);font-weight:500}
-  .price.featured .price-cta:hover{background:var(--amber-hover);border-color:var(--amber-hover)}
+  .price li::before{
+    content:"";position:absolute;left:0;top:8px;
+    width:8px;height:1px;background:var(--accent);
+  }
+  .price .price-cta{
+    margin-top:auto;
+    display:inline-block;text-align:center;
+    padding:14px;border:1px solid var(--rule-2);
+    font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+    transition:border-color .25s, color .25s, background .25s;
+    color:var(--ink);
+  }
+  .price .price-cta:hover{border-color:var(--accent);color:var(--accent)}
+  .price.featured .price-cta{background:var(--accent);color:#fff;border-color:var(--accent);font-weight:500}
+  .price.featured .price-cta:hover{background:var(--accent-hover);border-color:var(--accent-hover)}
   .pricing-foot{margin-top:32px;text-align:center;color:var(--ink-faint);font-size:13px;letter-spacing:.02em}
 
+  /* FAQ */
   .faq-list{border-top:1px solid var(--rule)}
   .faq{border-bottom:1px solid var(--rule);padding:28px 0;display:grid;grid-template-columns:1fr 2fr;gap:32px}
   .faq h3{font-size:20px;font-weight:400;letter-spacing:-0.01em;color:var(--ink)}
   .faq p{color:var(--ink-dim);font-size:15px;line-height:1.6}
 
-  .cta-block{padding:120px 0;text-align:center;border-top:1px solid var(--rule);background:var(--ink);color:var(--bg)}
+  /* CONTACT CTA */
+  .cta-block{
+    padding:120px 0;text-align:center;border-top:1px solid var(--rule);
+    background:var(--ink);color:var(--bg);
+  }
   .cta-block .h-display{margin:0 auto;max-width:18ch;color:var(--bg)}
-  .cta-block .h-display em{color:var(--amber)}
+  .cta-block .h-display em{color:var(--accent)}
   .cta-block .small{margin-top:24px;color:var(--ink-faint);font-size:13px;letter-spacing:.16em;text-transform:uppercase}
-  .cta-mail{margin-top:40px;display:inline-flex;align-items:center;gap:14px;padding:18px 28px;border:1px solid rgba(246,243,238,.2);font-family:var(--serif);font-size:20px;letter-spacing:-0.01em;color:var(--bg);transition:border-color .25s, color .25s}
-  .cta-mail:hover{border-color:var(--amber);color:var(--amber)}
+  .cta-mail{
+    margin-top:40px;display:inline-flex;align-items:center;gap:14px;
+    padding:18px 28px;border:1px solid rgba(255,255,255,.2);
+    font-family:var(--serif);font-size:20px;letter-spacing:-0.01em;
+    color:var(--bg);
+    transition:border-color .25s, color .25s;
+  }
+  .cta-mail:hover{border-color:var(--accent);color:var(--accent)}
 
+  /* FOOTER */
   footer{padding:48px 0 64px;border-top:1px solid var(--rule);color:var(--ink-faint);font-size:12px}
   .foot-inner{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
   .foot-links{display:flex;gap:24px}
-  .foot-links a:hover{color:var(--amber)}
+  .foot-links a:hover{color:var(--accent)}
   .foot-mark{font-family:var(--sans);font-weight:600;font-size:12px;letter-spacing:.18em;color:var(--ink)}
 
+  /* Reveal */
   .js .reveal{opacity:0;transform:translateY(16px);transition:opacity .9s ease, transform .9s ease}
   .js .reveal.in{opacity:1;transform:none}
-  @media (prefers-reduced-motion: reduce){.js .reveal{opacity:1;transform:none;transition:none}}
+  @media (prefers-reduced-motion: reduce){
+    .js .reveal{opacity:1;transform:none;transition:none}
+  }
 
+  /* Responsive */
   @media (max-width: 900px){
     .hero{padding:64px 0 80px}
     section{padding:80px 0}
@@ -238,8 +299,8 @@
     .steps{grid-template-columns:1fr}
     .step{border-right:none;border-bottom:1px solid var(--rule)}
     .step:last-child{border-bottom:none}
-    .examples-row{grid-template-columns:1fr;gap:20px}
-    .card-frame{padding:28px 20px}
+    .examples-row{grid-template-columns:1fr 1fr;gap:16px}
+    .cell-frame{transform:scale(.56);margin-bottom:-268px}
     .pricing-grid{grid-template-columns:1fr}
     .price{border-right:none}
     .faq{grid-template-columns:1fr;gap:8px}
@@ -249,6 +310,7 @@
     .cta-mail{font-size:16px;padding:14px 20px}
     .foot-inner{flex-direction:column;align-items:flex-start}
   }
+
   @media (max-width: 420px){
     :root{--pad:20px}
     .hero{padding:48px 0 64px}
@@ -351,104 +413,23 @@
       <div class="examples-row">
 
         <figure class="card-frame reveal">
-          <figcaption class="card-label">
-            <span>Alex Rivera / Bienes Raices</span>
-            <span class="dot" aria-hidden="true"></span>
-          </figcaption>
-          <div class="phone" role="img" aria-label="Maqueta de Alex Rivera, Bienes Raices">
-            <div class="phone-screen mock-realtor">
-              <div class="mock-photo"><div class="avatar" aria-hidden="true"></div></div>
-              <div class="mock-body">
-                <div class="mock-name">Alex Rivera</div>
-                <div class="mock-role">Bienes Raices</div>
-                <div class="mock-actions">
-                  <div class="act gold">Guardar contacto</div>
-                  <div class="act">Llamar</div>
-                  <div class="act">Mensaje</div>
-                  <div class="act">Propiedades</div>
-                  <div class="act">Reservar</div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <figcaption class="card-label"><span>Alex Rivera / Bienes Raíces</span><span class="dot" aria-hidden="true"></span></figcaption>
+          <iframe class="cell-frame" src="../mockups/realtor.html" title="Alex Rivera — Bienes Raíces" loading="lazy"></iframe>
         </figure>
 
         <figure class="card-frame reveal">
-          <figcaption class="card-label">
-            <span>Jamie Chen / Entrenador Personal</span>
-            <span class="dot" aria-hidden="true"></span>
-          </figcaption>
-          <div class="phone" role="img" aria-label="Maqueta de Jamie Chen, Entrenador Personal">
-            <div class="phone-screen mock-trainer">
-              <div class="mock-photo">
-                <img src="../images/trainer-portrait.jpg" alt="Entrenador en un gimnasio" loading="lazy">
-                <div class="lime-bar" aria-hidden="true"></div>
-              </div>
-              <div class="mock-body">
-                <div class="mock-name">Jamie Chen</div>
-                <div class="mock-role">Entrenador Personal</div>
-                <div class="stats">
-                  <span><b>1:1</b>entreno</span>
-                  <span><b>200+</b>clientes</span>
-                  <span><b>10a</b>experiencia</span>
-                </div>
-                <div class="mock-actions">
-                  <div class="act lime">Reservar sesión</div>
-                  <div class="act">Guardar contacto</div>
-                  <div class="act">Programas</div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <figcaption class="card-label"><span>Jamie Chen / Entrenador Personal</span><span class="dot" aria-hidden="true"></span></figcaption>
+          <iframe class="cell-frame" src="../mockups/trainer.html" title="Jamie Chen — Entrenador Personal" loading="lazy"></iframe>
         </figure>
 
         <figure class="card-frame reveal">
-          <figcaption class="card-label">
-            <span>Sofia Prieto / Maquillaje y Belleza</span>
-            <span class="dot" aria-hidden="true"></span>
-          </figcaption>
-          <div class="phone" role="img" aria-label="Maqueta de Sofia Prieto, Maquillaje">
-            <div class="phone-screen mock-mua">
-              <div class="mock-photo">
-                <div class="swatch sw1"></div><div class="swatch sw2"></div><div class="swatch sw3"></div>
-                <div class="swatch sw4"></div><div class="swatch sw5"></div><div class="swatch sw6"></div>
-              </div>
-              <div class="mock-body">
-                <div class="mock-name">Sofia Prieto</div>
-                <div class="mock-role">Maquillaje y Belleza</div>
-                <div class="mock-actions">
-                  <div class="act champ">Reservar</div>
-                  <div class="act">Llamar</div>
-                  <div class="act">Mensaje</div>
-                  <div class="act">Portafolio</div>
-                  <div class="act">Guardar contacto</div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <figcaption class="card-label"><span>Sofia Prieto / Maquillaje y Belleza</span><span class="dot" aria-hidden="true"></span></figcaption>
+          <iframe class="cell-frame" src="../mockups/mua.html" title="Sofia Prieto — Maquillaje y Belleza" loading="lazy"></iframe>
         </figure>
 
         <figure class="card-frame reveal">
-          <figcaption class="card-label">
-            <span>Marcus Hale / Diseño de Interiores</span>
-            <span class="dot" aria-hidden="true"></span>
-          </figcaption>
-          <div class="phone" role="img" aria-label="Maqueta de Marcus Hale, Diseño de Interiores">
-            <div class="phone-screen mock-designer">
-              <div class="mock-photo"><div class="block-left"></div><div class="block-right"></div></div>
-              <div class="mock-body">
-                <div class="mock-name">Marcus Hale</div>
-                <div class="mock-role">Diseño de Interiores</div>
-                <div class="mock-tag">Residencial. Comercial. Espacios con intención.</div>
-                <div class="mock-actions">
-                  <div class="act">Llamar <span class="act-arr">→</span></div>
-                  <div class="act">Mensaje <span class="act-arr">→</span></div>
-                  <div class="act">Portafolio <span class="act-arr">→</span></div>
-                  <div class="act">Guardar contacto <span class="act-arr">→</span></div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <figcaption class="card-label"><span>Marcus Hale / Diseño de Interiores</span><span class="dot" aria-hidden="true"></span></figcaption>
+          <iframe class="cell-frame" src="../mockups/designer.html" title="Marcus Hale — Diseño de Interiores" loading="lazy"></iframe>
         </figure>
 
       </div>

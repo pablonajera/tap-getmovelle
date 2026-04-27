@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sofia Prieto — Makeup &amp; Beauty</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%;overflow:hidden}
+  body{
+    font-family:'Inter',system-ui,sans-serif;
+    background:#f4dcd6;color:#1a1a1a;
+    display:flex;flex-direction:column;
+  }
+  .photo{
+    height:44%;position:relative;overflow:hidden;
+    background:#e8c4ba;
+  }
+  .photo img{width:100%;height:100%;object-fit:cover;object-position:center 15%}
+  .photo::after{
+    content:'';position:absolute;bottom:0;left:0;right:0;height:60px;
+    background:linear-gradient(transparent,#f4dcd6);
+  }
+  .body{flex:1;padding:18px 22px 24px;display:flex;flex-direction:column;text-align:center}
+  .name{font-size:19px;font-weight:600;letter-spacing:.02em}
+  .role{font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:#8a6b5e;margin-top:5px}
+  .tagline{font-size:11px;color:rgba(26,26,26,.5);margin-top:10px;line-height:1.45}
+  .actions{margin-top:auto;display:grid;grid-template-columns:1fr 1fr;gap:6px}
+  .act{
+    border:1px solid rgba(26,26,26,.18);
+    padding:10px 8px;font-size:9px;letter-spacing:.14em;text-transform:uppercase;
+    border-radius:20px;text-align:center;background:transparent;color:#1a1a1a;
+    transition:background .2s;cursor:pointer;
+  }
+  .act:hover{background:rgba(26,26,26,.05)}
+  .act.primary{background:#1a1a1a;color:#f4dcd6;border-color:#1a1a1a;grid-column:span 2}
+  .act.primary:hover{background:#333}
+</style>
+</head>
+<body>
+  <div class="photo">
+    <img src="../images/mua-portrait.jpg" alt="Sofia Prieto">
+  </div>
+  <div class="body">
+    <div class="name">Sofia Prieto</div>
+    <div class="role">Makeup &amp; Beauty</div>
+    <div class="tagline">Bridal, editorial &amp; everyday glam in Miami</div>
+    <div class="actions">
+      <div class="act primary">Book now</div>
+      <div class="act">Call</div>
+      <div class="act">Text</div>
+      <div class="act">Portfolio</div>
+      <div class="act">Save contact</div>
+    </div>
+  </div>
+</body>
+</html>

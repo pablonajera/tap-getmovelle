@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Marcus Hale — Interior Design</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%;overflow:hidden}
+  body{
+    font-family:'Inter',system-ui,sans-serif;
+    background:#f7f3ec;color:#0a0a0a;
+    display:flex;flex-direction:column;
+  }
+  .photo{
+    height:44%;position:relative;overflow:hidden;
+    background:#e8e3d9;
+  }
+  .photo img{width:100%;height:100%;object-fit:cover;object-position:center 25%}
+  .photo::after{
+    content:'';position:absolute;bottom:0;left:0;right:0;height:60px;
+    background:linear-gradient(transparent,#f7f3ec);
+  }
+  .body{flex:1;padding:18px 22px 24px;display:flex;flex-direction:column}
+  .name{font-family:'Fraunces',Georgia,serif;font-size:22px;font-weight:400;letter-spacing:-0.01em}
+  .role{font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:#b95a3c;margin-top:5px}
+  .tagline{font-size:11px;color:#6b655c;margin-top:12px;line-height:1.45}
+  .actions{margin-top:auto;display:flex;flex-direction:column;gap:0}
+  .act{
+    font-size:13px;color:#0a0a0a;padding:10px 0;
+    display:flex;align-items:center;justify-content:space-between;
+    border-bottom:1px solid rgba(10,10,10,.08);
+    cursor:pointer;transition:color .2s;
+  }
+  .act:hover{color:#b95a3c}
+  .act:last-child{border-bottom:none}
+  .act-arr{color:#b95a3c;font-family:'Fraunces',serif;font-style:italic;font-size:15px}
+</style>
+</head>
+<body>
+  <div class="photo">
+    <img src="../images/designer-portrait.jpg" alt="Marcus Hale">
+  </div>
+  <div class="body">
+    <div class="name">Marcus Hale</div>
+    <div class="role">Interior Design</div>
+    <div class="tagline">Residential. Commercial. Considered spaces.</div>
+    <div class="actions">
+      <div class="act">Call <span class="act-arr">→</span></div>
+      <div class="act">Text <span class="act-arr">→</span></div>
+      <div class="act">Portfolio <span class="act-arr">→</span></div>
+      <div class="act">Save contact <span class="act-arr">→</span></div>
+    </div>
+  </div>
+</body>
+</html>
