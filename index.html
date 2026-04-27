@@ -7,9 +7,11 @@
 <script>
   (function () {
     var lang = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
-    var dest = lang.indexOf('es') === 0 ? '/es/' : '/en/';
-    // Use current origin so it works on any host (elliot.najera.cc preview or tap.getmovelle.com)
-    window.location.replace(window.location.origin + '/tap-getmovelle' + dest + 'index.html');
+    var dest = lang.indexOf('es') === 0 ? 'es/' : 'en/';
+    // Detect base path: on elliot preview server the root is /tap-getmovelle/
+    var base = window.location.pathname.replace(/index\.html$/, '');
+    if (base.charAt(base.length - 1) !== '/') base += '/';
+    window.location.replace(base + dest);
   })();
 </script>
 <style>
@@ -23,8 +25,8 @@
 <noscript>
   <div class="pick">
     <p style="font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:#6b655c;margin-bottom:24px;">MOVELLE</p>
-    <a href="/tap-getmovelle/en/index.html">English</a>
-    <a href="/tap-getmovelle/es/index.html">Español</a>
+    <a href="en/">English</a>
+    <a href="es/">Español</a>
   </div>
 </noscript>
 </body>
