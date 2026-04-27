@@ -88,6 +88,9 @@
   }
   .nav-cta:hover{border-color:var(--accent);color:var(--accent)}
 
+  .nav-link{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);transition:color .25s}
+  .nav-link:hover{color:var(--accent)}
+
   /* HERO */
   .hero{padding:96px 0 120px;position:relative}
   .eyebrow{
@@ -218,6 +221,7 @@
   .price.featured .setup .num{color:var(--bg)}
   .price.featured .setup .lbl{color:var(--ink-faint)}
   .price.featured .setup{border-bottom-color:rgba(255,255,255,.12)}
+  .price.featured .monthly{color:var(--ink-faint)}
   .price.featured li{color:rgba(255,255,255,.65)}
   .price.featured li::before{background:var(--accent)}
   .price .pop{
@@ -235,6 +239,7 @@
   }
   .price .setup .num{font-family:var(--serif);font-size:48px;line-height:1;font-weight:300;color:var(--ink)}
   .price .setup .lbl{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint)}
+  .price .monthly{font-size:13px;color:var(--ink-faint);margin-top:4px;letter-spacing:.02em}
   .price ul{list-style:none;padding:0;margin:24px 0 32px;display:flex;flex-direction:column;gap:14px;flex:1}
   .price li{font-size:14px;line-height:1.5;color:var(--ink-dim);padding-left:20px;position:relative}
   .price li::before{
@@ -299,12 +304,13 @@
     .steps{grid-template-columns:1fr}
     .step{border-right:none;border-bottom:1px solid var(--rule)}
     .step:last-child{border-bottom:none}
-    .examples-row{grid-template-columns:1fr 1fr;gap:16px}
-    .cell-frame{transform:scale(.56);margin-bottom:-268px}
+    .examples-row{grid-template-columns:1fr;gap:32px}
+    .cell-frame{transform:scale(.70);margin-bottom:-182px}
     .pricing-grid{grid-template-columns:1fr}
     .price{border-right:none}
     .faq{grid-template-columns:1fr;gap:8px}
-    .nav-cta{display:none}
+    .nav-cta{font-size:11px;padding:8px 12px;letter-spacing:.12em}
+    .nav-link{display:none}
     .nav-right{gap:18px}
     .sec-head{margin-bottom:40px}
     .cta-mail{font-size:16px;padding:14px 20px}
@@ -330,6 +336,8 @@
   <div class="nav-inner">
     <a href="./" class="wordmark" aria-label="Movelle, home">MOVELLE</a>
     <nav class="nav-right" aria-label="Primary">
+      <a href="#examples" class="nav-link">Work</a>
+      <a href="#pricing" class="nav-link">Pricing</a>
       <div class="lang" aria-label="Language">
         <a href="./" class="active" aria-current="page">EN</a>
         <span aria-hidden="true" style="color:var(--ink-faint)">/</span>
@@ -458,8 +466,8 @@
             <span class="num">$350</span>
             <span class="lbl">setup</span>
           </div>
-          <ul>
-            <li>Single-page custom design at yourname.getmovelle.com</li>
+          <div class="monthly">+ $12/mo after launch</div>
+          <ul> at yourname.getmovelle.com</li>
             <li>Your photo and brand color</li>
             <li>Up to 4 actions: call, text, email, save</li>
             <li>QR code</li>
@@ -478,6 +486,7 @@
             <span class="num">$650</span>
             <span class="lbl">setup</span>
           </div>
+          <div class="monthly">+ $12/mo after launch</div>
           <ul>
             <li>Multi-section page: about, services, gallery, testimonials, contact</li>
             <li>Up to 12 actions and links</li>
@@ -497,6 +506,7 @@
             <span class="num">$1,400</span>
             <span class="lbl">setup</span>
           </div>
+          <div class="monthly">+ $12/mo after launch</div>
           <ul>
             <li>Fully bespoke layout</li>
             <li>Up to 3 pages</li>

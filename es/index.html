@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Movelle — Una tarjeta de contacto que si funcióna</title>
+<title>Movelle — Una tarjeta de contacto que sí funciona</title>
 <meta name="description" content="Movelle te diseña una página personal de contacto en tunombre.getmovelle.com. Compartes el enlace. Tus clientes tocan para llamar, escribir, guardar tu contacto o reservar.">
-<meta name="theme-color" content="#f6f3ee">
+<meta name="theme-color" content="#ffffff">
 <meta property="og:title" content="Movelle — tu tarjeta de contacto, reimaginada">
 <meta property="og:description" content="Una página personal en tunombre.getmovelle.com. Compartes el enlace. Tocan para llamar, escribir, guardar, reservar.">
 <meta property="og:type" content="website">
@@ -87,6 +87,9 @@
     color:var(--ink);transition:border-color .25s, color .25s, background .25s;
   }
   .nav-cta:hover{border-color:var(--accent);color:var(--accent)}
+
+  .nav-link{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);transition:color .25s}
+  .nav-link:hover{color:var(--accent)}
 
   /* HERO */
   .hero{padding:96px 0 120px;position:relative}
@@ -218,6 +221,7 @@
   .price.featured .setup .num{color:var(--bg)}
   .price.featured .setup .lbl{color:var(--ink-faint)}
   .price.featured .setup{border-bottom-color:rgba(255,255,255,.12)}
+  .price.featured .monthly{color:var(--ink-faint)}
   .price.featured li{color:rgba(255,255,255,.65)}
   .price.featured li::before{background:var(--accent)}
   .price .pop{
@@ -235,6 +239,7 @@
   }
   .price .setup .num{font-family:var(--serif);font-size:48px;line-height:1;font-weight:300;color:var(--ink)}
   .price .setup .lbl{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint)}
+  .price .monthly{font-size:13px;color:var(--ink-faint);margin-top:4px;letter-spacing:.02em}
   .price ul{list-style:none;padding:0;margin:24px 0 32px;display:flex;flex-direction:column;gap:14px;flex:1}
   .price li{font-size:14px;line-height:1.5;color:var(--ink-dim);padding-left:20px;position:relative}
   .price li::before{
@@ -299,12 +304,13 @@
     .steps{grid-template-columns:1fr}
     .step{border-right:none;border-bottom:1px solid var(--rule)}
     .step:last-child{border-bottom:none}
-    .examples-row{grid-template-columns:1fr 1fr;gap:16px}
-    .cell-frame{transform:scale(.56);margin-bottom:-268px}
+    .examples-row{grid-template-columns:1fr;gap:32px}
+    .cell-frame{transform:scale(.70);margin-bottom:-182px}
     .pricing-grid{grid-template-columns:1fr}
     .price{border-right:none}
     .faq{grid-template-columns:1fr;gap:8px}
-    .nav-cta{display:none}
+    .nav-cta{font-size:11px;padding:8px 12px;letter-spacing:.12em}
+    .nav-link{display:none}
     .nav-right{gap:18px}
     .sec-head{margin-bottom:40px}
     .cta-mail{font-size:16px;padding:14px 20px}
@@ -323,13 +329,15 @@
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 </head>
 <body>
-<a href="#main-content" class="skip" style="position:absolute;left:-9999px;top:0;z-index:100;padding:12px 24px;background:var(--amber);color:#fff;font-size:14px">Skip to content</a>
+<a href="#main-content" class="skip" style="position:absolute;left:-9999px;top:0;z-index:100;padding:12px 24px;background:var(--accent);color:#fff;font-size:14px">Skip to content</a>
 <style>.skip:focus{left:0}</style>
 
 <header class="nav">
   <div class="nav-inner">
     <a href="./" class="wordmark" aria-label="Movelle, inicio">MOVELLE</a>
     <nav class="nav-right" aria-label="Principal">
+      <a href="#examples" class="nav-link">Diseños</a>
+      <a href="#pricing" class="nav-link">Precios</a>
       <div class="lang" aria-label="Idioma">
         <a href="../en/" aria-label="English">EN</a>
         <span aria-hidden="true" style="color:var(--ink-faint)">/</span>
@@ -450,7 +458,8 @@
 
         <article class="price reveal">
           <div class="tier">Esencial</div>
-          <div class="setup"><span class="num">$350</span><span class="lbl">setup</span></div>
+          <div class="setup"><span class="num">$350</span><span class="lbl">diseño</span></div>
+          <div class="monthly">+ $12/mes después del lanzamiento</div>
           <ul>
             <li>Página de una sección a medida en tunombre.getmovelle.com</li>
             <li>Tu foto y color de marca</li>
@@ -467,7 +476,8 @@
             Más elegida
           </div>
           <div class="tier">Distintiva</div>
-          <div class="setup"><span class="num">$650</span><span class="lbl">setup</span></div>
+          <div class="setup"><span class="num">$650</span><span class="lbl">diseño</span></div>
+          <div class="monthly">+ $12/mes después del lanzamiento</div>
           <ul>
             <li>Página de varias secciónes: sobre ti, servicios, galería, testimonios, contacto</li>
             <li>Hasta 12 acciones y enlaces</li>
@@ -483,7 +493,8 @@
 
         <article class="price reveal">
           <div class="tier">Premier</div>
-          <div class="setup"><span class="num">$1,400</span><span class="lbl">setup</span></div>
+          <div class="setup"><span class="num">$1,400</span><span class="lbl">diseño</span></div>
+          <div class="monthly">+ $12/mes después del lanzamiento</div>
           <ul>
             <li>Diseño totalmente a medida</li>
             <li>Hasta 3 páginas</li>
