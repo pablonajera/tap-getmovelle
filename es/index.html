@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Movelle — Una tarjeta de contacto que si funciona</title>
-<meta name="description" content="Movelle te diseña una pagina personal de contacto en tunombre.getmovelle.com. Compartes el enlace. Tus clientes tocan para llamar, escribir, guardar tu contacto o reservar.">
+<title>Movelle — Una tarjeta de contacto que si funcióna</title>
+<meta name="description" content="Movelle te diseña una página personal de contacto en tunombre.getmovelle.com. Compartes el enlace. Tus clientes tocan para llamar, escribir, guardar tu contacto o reservar.">
 <meta name="theme-color" content="#f6f3ee">
 <meta property="og:title" content="Movelle — tu tarjeta de contacto, reimaginada">
-<meta property="og:description" content="Una pagina personal en tunombre.getmovelle.com. Compartes el enlace. Tocan para llamar, escribir, guardar, reservar.">
+<meta property="og:description" content="Una página personal en tunombre.getmovelle.com. Compartes el enlace. Tocan para llamar, escribir, guardar, reservar.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://tap.getmovelle.com/es/">
 <meta property="og:image" content="https://tap.getmovelle.com/images/og.png">
@@ -25,11 +25,12 @@
     --bg-card:#fff;
     --ink:#1a1815;
     --ink-dim:#6b655c;
-    --ink-faint:#9e9789;
+    --ink-faint:#7a7568;
     --rule:#d8d3c9;
     --rule-2:#c4bfb5;
     --amber:#b8862d;
     --amber-hover:#9a6f1e;
+    --amber-text:#8d6820;
     --amber-bg:#f0e4c8;
     --serif:"Fraunces", Georgia, serif;
     --sans:"Inter", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
@@ -71,6 +72,7 @@
   .nav-right{display:flex;align-items:center;gap:28px}
   .lang{display:flex;gap:10px;font-size:11px;letter-spacing:.16em;color:var(--ink-faint)}
   .lang a.active{color:var(--ink);font-weight:600}
+  .lang a{display:inline-block;min-width:44px;min-height:44px;line-height:44px;text-align:center}
   .lang a:hover{color:var(--amber)}
   .nav-cta{
     font-size:12px;letter-spacing:.14em;text-transform:uppercase;
@@ -82,7 +84,7 @@
   .hero{padding:96px 0 120px;position:relative}
   .eyebrow{
     font-size:11px;letter-spacing:.22em;text-transform:uppercase;
-    color:var(--amber);margin-bottom:36px;
+    color:var(--amber-text);margin-bottom:36px;
     display:inline-flex;align-items:center;gap:14px;
   }
   .eyebrow::before{content:"";display:inline-block;width:24px;height:1px;background:var(--amber)}
@@ -115,7 +117,7 @@
 
   section{padding:120px 0;border-top:1px solid var(--rule)}
   .sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:24px;margin-bottom:64px;flex-wrap:wrap}
-  .sec-num{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--amber)}
+  .sec-num{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--amber-text)}
   .sec-title{font-size:clamp(32px, 4.8vw, 56px);line-height:1.05;letter-spacing:-0.02em;font-weight:300;max-width:16ch}
   .sec-kicker{color:var(--ink-dim);max-width:42ch;font-size:15px}
 
@@ -256,8 +258,11 @@
     .btn{padding:14px 20px;font-size:12px}
   }
 </style>
+<noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 </head>
 <body>
+<a href="#main-content" class="skip" style="position:absolute;left:-9999px;top:0;z-index:100;padding:12px 24px;background:var(--amber);color:#fff;font-size:14px">Skip to content</a>
+<style>.skip:focus{left:0}</style>
 
 <header class="nav">
   <div class="nav-inner">
@@ -273,14 +278,14 @@
   </div>
 </header>
 
-<main>
+<main id="main-content">
 
   <section class="hero" style="border-top:none">
     <div class="wrap">
-      <p class="eyebrow reveal">Una pagina que vale la pena compartir</p>
+      <p class="eyebrow reveal">Una página que vale la pena compartir</p>
       <!-- COPY TBD — placeholder from scoping pass -->
-      <h1 class="h-display reveal">Tu tarjeta de contacto, ahora como una pagina que vale la pena <em>compartir</em>.</h1>
-      <p class="hero-sub reveal">Movelle te diseña una pagina personal. Tu foto, lo que haces, tus numeros, tus enlaces, captura de clientes. En <i>tunombre.getmovelle.com</i>. Compartes el enlace. Tocan para llamarte, escribirte, guardar tu contacto o reservar contigo. La primera impresion que si van a recordar.</p>
+      <h1 class="h-display reveal">Tu tarjeta de contacto, ahora como una página que vale la pena <em>compartir</em>.</h1>
+      <p class="hero-sub reveal">Movelle te diseña una página personal. Tu foto, lo que haces, tus números, tus enlaces, captura de clientes. En <i>tunombre.getmovelle.com</i>. Compartes el enlace. Tocan para llamarte, escribirte, guardar tu contacto o reservar contigo. La primera impresion que si van a recordar.</p>
       <div class="hero-ctas reveal">
         <a href="#pricing" class="btn btn-primary">Crea tu tarjeta <span class="arr">→</span></a>
         <a href="#examples" class="btn btn-ghost">Ver ejemplos</a>
@@ -292,11 +297,11 @@
           <div class="v">tunombre.getmovelle.com</div>
         </div>
         <div class="meta-item">
-          <div class="k">Como la abren</div>
+          <div class="k">Cómo la abren</div>
           <div class="v">Un enlace. Cualquier navegador.</div>
         </div>
         <div class="meta-item">
-          <div class="k">Que hacen</div>
+          <div class="k">Qué hacen</div>
           <div class="v">Tocan para llamar, escribir, guardar, reservar.</div>
         </div>
       </div>
@@ -307,27 +312,27 @@
     <div class="wrap">
       <div class="sec-head">
         <div>
-          <div class="sec-num">01 — Como funciona</div>
+          <div class="sec-num">01 — Cómo funcióna</div>
           <h2 class="sec-title" style="margin-top:18px">Tres pasos. Sin app.</h2>
         </div>
-        <p class="sec-kicker">Una breve platica, un diseño a medida, un enlace que puedes mandar a donde quieras. Sin plantillas, sin wizard de configuracion.</p>
+        <p class="sec-kicker">Una breve platica, un diseño a medida, un enlace que puedes mandar a donde quieras. Sin plantillas, sin wizard de configuración.</p>
       </div>
 
       <div class="steps">
         <article class="step reveal">
           <div class="step-num">01</div>
-          <h3>Cuentanos sobre ti.</h3>
+          <h3>Cuéntanos sobre ti.</h3>
           <p>Tu foto, tus colores de marca, lo que haces, a quien atiendes.</p>
         </article>
         <article class="step reveal">
           <div class="step-num">02</div>
-          <h3>Diseñamos tu pagina.</h3>
+          <h3>Diseñamos tu página.</h3>
           <p>A medida en tunombre.getmovelle.com. No es una plantilla.</p>
         </article>
         <article class="step reveal">
           <div class="step-num">03</div>
           <h3>Comparte el enlace.</h3>
-          <p>Por mensaje, AirDrop, QR, correo, wallet del telefono. Tocan para llamar, escribir, guardar, reservar.</p>
+          <p>Por mensaje, AirDrop, QR, correo, wallet del teléfono. Tocan para llamar, escribir, guardar, reservar.</p>
         </article>
       </div>
     </div>
@@ -338,9 +343,9 @@
       <div class="sec-head">
         <div>
           <div class="sec-num">02 — Trabajo reciente</div>
-          <h2 class="sec-title" style="margin-top:18px">Paginas, no plantillas.</h2>
+          <h2 class="sec-title" style="margin-top:18px">Páginas, no plantillas.</h2>
         </div>
-        <p class="sec-kicker">Cada pagina se diseña alrededor de la persona. Diferente paleta, diferente ritmo, diferentes prioridades.</p>
+        <p class="sec-kicker">Cada página se diseña alrededor de la persona. Diferente paleta, diferente ritmo, diferentes prioridades.</p>
       </div>
 
       <div class="examples-row">
@@ -388,7 +393,7 @@
                   <span><b>10a</b>experiencia</span>
                 </div>
                 <div class="mock-actions">
-                  <div class="act lime">Reservar sesion</div>
+                  <div class="act lime">Reservar sesión</div>
                   <div class="act">Guardar contacto</div>
                   <div class="act">Programas</div>
                 </div>
@@ -434,7 +439,7 @@
               <div class="mock-body">
                 <div class="mock-name">Marcus Hale</div>
                 <div class="mock-role">Diseño de Interiores</div>
-                <div class="mock-tag">Residencial. Comercial. Espacios con intencion.</div>
+                <div class="mock-tag">Residencial. Comercial. Espacios con intención.</div>
                 <div class="mock-actions">
                   <div class="act">Llamar <span class="act-arr">→</span></div>
                   <div class="act">Mensaje <span class="act-arr">→</span></div>
@@ -457,7 +462,7 @@
           <div class="sec-num">03 — Precios</div>
           <h2 class="sec-title" style="margin-top:18px">Hecho una vez. Tuyo siempre.</h2>
         </div>
-        <p class="sec-kicker">Un costo unico de diseño y $12 al mes. Sin cobros sorpresa por hosting o renovaciones.</p>
+        <p class="sec-kicker">Un costo único de diseño y $12 al mes. Sin cobros sorpresa por hosting o renovaciones.</p>
       </div>
 
       <div class="pricing-grid">
@@ -466,24 +471,24 @@
           <div class="tier">Esencial</div>
           <div class="setup"><span class="num">$350</span><span class="lbl">setup</span></div>
           <ul>
-            <li>Pagina de una seccion a medida en tunombre.getmovelle.com</li>
+            <li>Página de una sección a medida en tunombre.getmovelle.com</li>
             <li>Tu foto y color de marca</li>
             <li>Hasta 4 acciones: llamar, escribir, correo, guardar contacto</li>
-            <li>Codigo QR</li>
+            <li>Código QR</li>
             <li>2 actualizaciones de contenido</li>
           </ul>
           <a href="mailto:hello@getmovelle.com?subject=Movelle%20Esencial" class="price-cta">Elegir Esencial</a>
         </article>
 
         <article class="price featured reveal">
-          <div class="pop" aria-label="Mas elegida">
+          <div class="pop" aria-label="Más elegida">
             <svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M5 0l1.4 3.3L10 3.8 7.4 6.2 8.1 9.7 5 7.9 1.9 9.7 2.6 6.2 0 3.8 3.6 3.3z" fill="currentColor"/></svg>
-            Mas elegida
+            Más elegida
           </div>
           <div class="tier">Distintiva</div>
           <div class="setup"><span class="num">$650</span><span class="lbl">setup</span></div>
           <ul>
-            <li>Pagina de varias secciones: sobre ti, servicios, galeria, testimonios, contacto</li>
+            <li>Página de varias secciónes: sobre ti, servicios, galería, testimonios, contacto</li>
             <li>Hasta 12 acciones y enlaces</li>
             <li>Formulario de captura de clientes</li>
             <li>Movimiento sutil</li>
@@ -500,12 +505,12 @@
           <div class="setup"><span class="num">$1,400</span><span class="lbl">setup</span></div>
           <ul>
             <li>Diseño totalmente a medida</li>
-            <li>Hasta 3 paginas</li>
+            <li>Hasta 3 páginas</li>
             <li>Animaciones a medida</li>
-            <li>Configuracion bilingue EN y ES completa</li>
+            <li>Configuración bilingüe EN y ES completa</li>
             <li>Dominio propio premium</li>
             <li>Correo personalizado: tunombre@tuempresa.com</li>
-            <li>Metricas avanzadas + resumen mensual de desempeño</li>
+            <li>Métricas avanzadas + resumen mensual de desempeño</li>
             <li>20 actualizaciones de contenido</li>
           </ul>
           <a href="mailto:hello@getmovelle.com?subject=Movelle%20Premier" class="price-cta">Elegir Premier</a>
@@ -527,19 +532,19 @@
 
       <div class="faq-list">
         <div class="faq reveal">
-          <h3>Necesito una app?</h3>
-          <p>No. Es una pagina web. Se abre en cualquier navegador, en cualquier telefono.</p>
+          <h3>¿Necesito una app?</h3>
+          <p>No. Es una página web. Se abre en cualquier navegador, en cualquier teléfono.</p>
         </div>
         <div class="faq reveal">
-          <h3>Como la comparto?</h3>
-          <p>Por mensaje, AirDrop, escaneando el QR, en tu firma de correo, o guardandola en el wallet del telefono.</p>
+          <h3>Cómo la comparto?</h3>
+          <p>Por mensaje, AirDrop, escaneando el QR, en tu firma de correo, o guardandola en el wallet del teléfono.</p>
         </div>
         <div class="faq reveal">
-          <h3>La puedo actualizar?</h3>
+          <h3>¿La puedo actualizar?</h3>
           <p>Si. Nos mandas lo que quieres cambiar. Las actualizaciones estan incluidas segun tu plan. Las extras se cobran por cambio.</p>
         </div>
         <div class="faq reveal">
-          <h3>Y un dominio propio?</h3>
+          <h3>¿Y un dominio propio?</h3>
           <p>Incluido en Distintiva y Premier. Trae el tuyo o te ayudamos a registrarlo.</p>
         </div>
       </div>
@@ -549,7 +554,7 @@
   <section class="cta-block" id="contact">
     <div class="wrap">
       <h2 class="h-display reveal">Listo cuando tu <em>quieras</em>.</h2>
-      <p class="small reveal">Cuentanos sobre ti. Te respondemos el mismo dia.</p>
+      <p class="small reveal">Cuéntanos sobre ti. Te respondemos el mismo día.</p>
       <a class="cta-mail reveal" href="mailto:hello@getmovelle.com">hello@getmovelle.com <span class="arr">→</span></a>
     </div>
   </section>
@@ -563,8 +568,6 @@
       <span style="margin-left:18px">© <span id="yr">2026</span> Movelle</span>
     </div>
     <div class="foot-links">
-      <a href="#">Privacidad</a>
-      <a href="#">Terminos</a>
       <a href="mailto:hello@getmovelle.com">Contacto</a>
     </div>
   </div>

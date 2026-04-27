@@ -25,11 +25,12 @@
     --bg-card:#fff;
     --ink:#1a1815;
     --ink-dim:#6b655c;
-    --ink-faint:#9e9789;
+    --ink-faint:#7a7568;
     --rule:#d8d3c9;
     --rule-2:#c4bfb5;
     --amber:#b8862d;
     --amber-hover:#9a6f1e;
+    --amber-text:#8d6820;
     --amber-bg:#f0e4c8;
     --serif:"Fraunces", Georgia, serif;
     --sans:"Inter", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
@@ -78,6 +79,7 @@
   .nav-right{display:flex;align-items:center;gap:28px}
   .lang{display:flex;gap:10px;font-size:11px;letter-spacing:.16em;color:var(--ink-faint)}
   .lang a.active{color:var(--ink);font-weight:600}
+  .lang a{display:inline-block;min-width:44px;min-height:44px;line-height:44px;text-align:center}
   .lang a:hover{color:var(--amber)}
   .nav-cta{
     font-size:12px;letter-spacing:.14em;text-transform:uppercase;
@@ -90,7 +92,7 @@
   .hero{padding:96px 0 120px;position:relative}
   .eyebrow{
     font-size:11px;letter-spacing:.22em;text-transform:uppercase;
-    color:var(--amber);margin-bottom:36px;
+    color:var(--amber-text);margin-bottom:36px;
     display:inline-flex;align-items:center;gap:14px;
   }
   .eyebrow::before{
@@ -143,7 +145,7 @@
   /* SECTIONS */
   section{padding:120px 0;border-top:1px solid var(--rule)}
   .sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:24px;margin-bottom:64px;flex-wrap:wrap}
-  .sec-num{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--amber)}
+  .sec-num{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--amber-text)}
   .sec-title{
     font-size:clamp(32px, 4.8vw, 56px);
     line-height:1.05;
@@ -411,8 +413,11 @@
     .btn{padding:14px 20px;font-size:12px}
   }
 </style>
+<noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 </head>
 <body>
+<a href="#main-content" class="skip" style="position:absolute;left:-9999px;top:0;z-index:100;padding:12px 24px;background:var(--amber);color:#fff;font-size:14px">Skip to content</a>
+<style>.skip:focus{left:0}</style>
 
 <header class="nav">
   <div class="nav-inner">
@@ -428,7 +433,7 @@
   </div>
 </header>
 
-<main>
+<main id="main-content">
 
   <!-- HERO -->
   <section class="hero" style="border-top:none">
@@ -747,8 +752,6 @@
       <span style="margin-left:18px">© <span id="yr">2026</span> Movelle</span>
     </div>
     <div class="foot-links">
-      <a href="#">Privacy</a>
-      <a href="#">Terms</a>
       <a href="mailto:hello@getmovelle.com">Contact</a>
     </div>
   </div>
