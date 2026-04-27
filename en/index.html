@@ -149,6 +149,7 @@
   section{padding:120px 0;border-top:1px solid var(--rule)}
   .sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:24px;margin-bottom:64px;flex-wrap:wrap}
   .sec-num{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent-text)}
+  .sec-num + .sec-title{margin-top:18px}
   .sec-title{
     font-size:clamp(32px, 4.8vw, 56px);
     line-height:1.05;
@@ -286,6 +287,7 @@
   footer{padding:48px 0 64px;border-top:1px solid var(--rule);color:var(--ink-faint);font-size:12px}
   .foot-inner{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
   .foot-links{display:flex;gap:24px}
+  .foot-links a{display:inline-block;min-height:44px;line-height:44px}
   .foot-links a:hover{color:var(--accent)}
   .foot-mark{font-family:var(--sans);font-weight:600;font-size:12px;letter-spacing:.18em;color:var(--ink)}
 
@@ -295,6 +297,11 @@
   @media (prefers-reduced-motion: reduce){
     .js .reveal{opacity:1;transform:none;transition:none}
   }
+
+  /* Focus-visible */
+  .btn:focus-visible,.nav-cta:focus-visible,.price-cta:focus-visible,
+  .cta-mail:focus-visible,.nav-link:focus-visible,.lang a:focus-visible,
+  .foot-links a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 
   /* Responsive */
   @media (max-width: 900px){
@@ -309,7 +316,7 @@
     .pricing-grid{grid-template-columns:1fr}
     .price{border-right:none}
     .faq{grid-template-columns:1fr;gap:8px}
-    .nav-cta{font-size:11px;padding:8px 12px;letter-spacing:.12em}
+    .nav-cta{font-size:11px;padding:12px 12px;letter-spacing:.12em;min-height:44px}
     .nav-link{display:none}
     .nav-right{gap:18px}
     .sec-head{margin-bottom:40px}
@@ -385,7 +392,7 @@
       <div class="sec-head">
         <div>
           <div class="sec-num">01 — How it works</div>
-          <h2 class="sec-title" style="margin-top:18px">Three steps. No app.</h2>
+          <h2 class="sec-title">Three steps. No app.</h2>
         </div>
         <p class="sec-kicker">A short intake, a custom build, a link you can send anywhere. No templates, no theme picker, no setup wizard.</p>
       </div>
@@ -416,7 +423,7 @@
       <div class="sec-head">
         <div>
           <div class="sec-num">02 — Recent work</div>
-          <h2 class="sec-title" style="margin-top:18px">Pages, not templates.</h2>
+          <h2 class="sec-title">Pages, not templates.</h2>
         </div>
         <p class="sec-kicker">Each page is designed around the person. Different palette, different rhythm, different priorities.</p>
       </div>
@@ -453,7 +460,7 @@
       <div class="sec-head">
         <div>
           <div class="sec-num">03 — Pricing</div>
-          <h2 class="sec-title" style="margin-top:18px">Built once. Yours forever.</h2>
+          <h2 class="sec-title">Built once. Yours forever.</h2>
         </div>
         <p class="sec-kicker">A one-time setup, then a flat $12 a month. No tiers on the monthly. No surprise bills.</p>
       </div>
@@ -467,7 +474,8 @@
             <span class="lbl">setup</span>
           </div>
           <div class="monthly">+ $12/mo after launch</div>
-          <ul> at yourname.getmovelle.com</li>
+          <ul>
+            <li>Single-page custom design at yourname.getmovelle.com</li>
             <li>Your photo and brand color</li>
             <li>Up to 4 actions: call, text, email, save</li>
             <li>QR code</li>
@@ -532,7 +540,7 @@
       <div class="sec-head">
         <div>
           <div class="sec-num">04 — Questions</div>
-          <h2 class="sec-title" style="margin-top:18px;font-family:var(--serif);font-weight:400">A few things you will ask.</h2>
+          <h2 class="sec-title">A few things you will ask.</h2>
         </div>
       </div>
 

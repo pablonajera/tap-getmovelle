@@ -6,38 +6,54 @@
 <title>Sofia Prieto — Makeup &amp; Beauty</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sacramento&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   *{box-sizing:border-box;margin:0;padding:0}
   html,body{height:100%;overflow:hidden}
   body{
     font-family:'Inter',system-ui,sans-serif;
-    background:#f4dcd6;color:#1a1a1a;
+    background:#1a1014;color:#f5e6e0;
     display:flex;flex-direction:column;
+    position:relative;
+  }
+  body::before{
+    content:'';position:absolute;inset:0;
+    background:radial-gradient(ellipse at 30% 0%,rgba(199,120,140,.25) 0%,transparent 60%),
+               radial-gradient(ellipse at 80% 100%,rgba(180,130,100,.15) 0%,transparent 50%);
+    pointer-events:none;z-index:0;
   }
   .photo{
-    height:44%;position:relative;overflow:hidden;
-    background:#e8c4ba;
+    height:48%;position:relative;overflow:hidden;
+    background:#150d10;z-index:1;
   }
   .photo img{width:100%;height:100%;object-fit:cover;object-position:center 15%}
   .photo::after{
-    content:'';position:absolute;bottom:0;left:0;right:0;height:60px;
-    background:linear-gradient(transparent,#f4dcd6);
+    content:'';position:absolute;bottom:0;left:0;right:0;height:100px;
+    background:linear-gradient(transparent,#1a1014);
   }
-  .body{flex:1;padding:18px 22px 24px;display:flex;flex-direction:column;text-align:center}
-  .name{font-size:19px;font-weight:600;letter-spacing:.02em}
-  .role{font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:#8a6b5e;margin-top:5px}
-  .tagline{font-size:11px;color:rgba(26,26,26,.5);margin-top:10px;line-height:1.45}
-  .actions{margin-top:auto;display:grid;grid-template-columns:1fr 1fr;gap:6px}
+  .body{flex:1;padding:14px 22px 20px;display:flex;flex-direction:column;text-align:center;position:relative;z-index:1}
+  .name{font-family:'Sacramento',cursive;font-size:32px;font-weight:400;letter-spacing:.02em;color:#f5e6e0}
+  .role{font-size:8px;letter-spacing:.28em;text-transform:uppercase;color:#c7788c;margin-top:2px}
+  .tagline{font-size:10px;color:rgba(245,230,224,.45);margin-top:8px;line-height:1.45}
+  .socials{display:flex;justify-content:center;gap:14px;margin-top:12px}
+  .soc{
+    width:32px;height:32px;border-radius:50%;
+    border:1px solid rgba(199,120,140,.35);
+    display:flex;align-items:center;justify-content:center;
+    font-size:12px;color:#c7788c;cursor:pointer;
+    transition:background .2s,border-color .2s;
+  }
+  .soc:hover{background:rgba(199,120,140,.15);border-color:#c7788c}
+  .actions{margin-top:auto;display:grid;grid-template-columns:1fr 1fr;gap:5px}
   .act{
-    border:1px solid rgba(26,26,26,.18);
-    padding:10px 8px;font-size:9px;letter-spacing:.14em;text-transform:uppercase;
-    border-radius:20px;text-align:center;background:transparent;color:#1a1a1a;
+    border:1px solid rgba(245,230,224,.12);
+    padding:9px 6px;font-size:8px;letter-spacing:.14em;text-transform:uppercase;
+    border-radius:20px;text-align:center;background:transparent;color:#f5e6e0;
     transition:background .2s;cursor:pointer;
   }
-  .act:hover{background:rgba(26,26,26,.05)}
-  .act.primary{background:#1a1a1a;color:#f4dcd6;border-color:#1a1a1a;grid-column:span 2}
-  .act.primary:hover{background:#333}
+  .act:hover{background:rgba(245,230,224,.06)}
+  .act.primary{background:linear-gradient(135deg,#c7788c,#b86478);color:#1a1014;border:none;grid-column:span 2;font-weight:600}
+  .act.primary:hover{background:linear-gradient(135deg,#d4889c,#c7788c)}
 </style>
 </head>
 <body>
@@ -48,6 +64,11 @@
     <div class="name">Sofia Prieto</div>
     <div class="role">Makeup &amp; Beauty</div>
     <div class="tagline">Bridal, editorial &amp; everyday glam in Miami</div>
+    <div class="socials">
+      <div class="soc" title="Instagram">IG</div>
+      <div class="soc" title="TikTok">TT</div>
+      <div class="soc" title="YouTube">YT</div>
+    </div>
     <div class="actions">
       <div class="act primary">Book now</div>
       <div class="act">Call</div>
