@@ -12,6 +12,9 @@
 <meta property="og:url" content="https://tap.getmovelle.com/en/">
 <meta property="og:image" content="https://tap.getmovelle.com/images/og.png">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="../images/favicon-192.png">
+<link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
 <link rel="alternate" hreflang="en" href="https://tap.getmovelle.com/en/">
 <link rel="alternate" hreflang="es" href="https://tap.getmovelle.com/es/">
 <link rel="canonical" href="https://tap.getmovelle.com/en/">
@@ -73,12 +76,14 @@
     max-width:var(--maxw);margin:0 auto;
   }
   .wordmark{
+    display:inline-flex;align-items:center;gap:10px;
     font-family:var(--sans);
     font-weight:600;
     font-size:13px;
     letter-spacing:.18em;
     color:var(--ink);
   }
+  .wordmark img{width:28px;height:28px}
   .nav-right{display:flex;align-items:center;gap:28px}
   .lang{display:flex;gap:10px;font-size:11px;letter-spacing:.16em;color:var(--ink-faint)}
   .lang a.active{color:var(--ink);font-weight:600}
@@ -95,16 +100,24 @@
   .nav-link:hover{color:var(--accent)}
 
   /* HERO */
-  .hero{padding:96px 0 120px;position:relative;overflow:hidden}
+  .hero{
+    padding:96px 0 120px;position:relative;overflow:hidden;
+    background:linear-gradient(160deg,#ffffff 0%,#f0f4ff 40%,#e8eeff 70%,#f0f4ff 100%);
+  }
   .hero::before{
-    content:'';position:absolute;top:-40%;right:-20%;width:80%;height:120%;
-    background:radial-gradient(ellipse at center,rgba(37,99,235,.06) 0%,transparent 70%);
+    content:'';position:absolute;top:-20%;right:-10%;width:70%;height:100%;
+    background:radial-gradient(ellipse at center,rgba(37,99,235,.10) 0%,transparent 60%);
     pointer-events:none;
   }
   .hero::after{
-    content:'';position:absolute;bottom:0;left:10%;width:60%;height:1px;
-    background:linear-gradient(90deg,transparent,var(--accent-bg),transparent);
+    content:'';position:absolute;inset:0;
+    background-image:radial-gradient(circle,rgba(37,99,235,.06) 1px,transparent 1px);
+    background-size:32px 32px;
     pointer-events:none;
+  }
+  .hero-accent-line{
+    position:absolute;bottom:0;left:10%;width:60%;height:1px;
+    background:linear-gradient(90deg,transparent,var(--accent-bg),var(--accent),var(--accent-bg),transparent);
   }
   .eyebrow{
     font-size:11px;letter-spacing:.22em;text-transform:uppercase;
@@ -395,7 +408,7 @@
 
 <header class="nav">
   <div class="nav-inner">
-    <a href="./" class="wordmark" aria-label="Movelle, home">MOVELLE</a>
+    <a href="./" class="wordmark" aria-label="Movelle, home"><img src="../images/movelle-logo.png" alt="" width="28" height="28">MOVELLE</a>
     <nav class="nav-right" aria-label="Primary">
       <a href="#examples" class="nav-link">Work</a>
       <a href="#pricing" class="nav-link">Pricing</a>
@@ -437,9 +450,8 @@
         </div>
       </div>
     </div>
+    <div class="hero-accent-line" aria-hidden="true"></div>
   </section>
-
-  <!-- HOW -->
   <section id="how">
     <div class="wrap">
       <div class="sec-head">
