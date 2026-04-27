@@ -1,0 +1,1166 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Movelle. A contact card reimagined as a page worth sharing.</title>
+<meta name="description" content="Movelle builds you a custom personal page at yourname.getmovelle.com. Send the link. They tap to call, text, save, or book." />
+<meta property="og:title" content="Movelle. A contact card reimagined as a page worth sharing." />
+<meta property="og:description" content="Custom personal pages at yourname.getmovelle.com. The first impression they'll actually remember." />
+<meta property="og:image" content="images/og.png" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://tap.getmovelle.com/" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --paper: #f6f3ee;
+    --paper-deep: #efeae1;
+    --ink: #0e0e0e;
+    --ink-soft: #2a2724;
+    --muted: #6b655c;
+    --rule: #1a1a1a;
+    --hair: rgba(14,14,14,0.18);
+    --accent: #7a2e2e; /* deep oxblood */
+    --accent-ink: #4d1c1c;
+    --serif: "Fraunces", "PT Serif", Georgia, serif;
+    --sans: "Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  a { color: inherit; text-decoration: none; }
+  a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+  img, svg { max-width: 100%; display: block; }
+
+  ::selection { background: var(--accent); color: var(--paper); }
+
+  /* layout */
+  .wrap {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* magazine label */
+  .label {
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .label .num { color: var(--accent); margin-right: 8px; }
+
+  hr.hair {
+    border: 0;
+    border-top: 1px solid var(--hair);
+    margin: 0;
+  }
+  hr.ink {
+    border: 0;
+    border-top: 1px solid var(--rule);
+    margin: 0;
+  }
+
+  /* nav */
+  .nav {
+    padding: 22px 0 18px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .nav-inner {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 24px;
+  }
+  .wordmark {
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.18em;
+  }
+  .nav-links {
+    display: flex;
+    gap: 28px;
+    align-items: baseline;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+  }
+  .nav-links a { color: var(--ink-soft); }
+  .lang {
+    display: flex;
+    gap: 10px;
+    align-items: baseline;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  .lang .sep { color: var(--hair); }
+  .lang .active { color: var(--ink); font-weight: 600; }
+  .lang a:not(.active) { color: var(--muted); }
+
+  /* hero */
+  .hero {
+    padding: 72px 0 96px;
+    border-bottom: 1px solid var(--hair);
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  .hero-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 28px;
+  }
+  .hero-eyebrow .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--accent);
+    display: inline-block;
+  }
+  h1.display {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(44px, 7.2vw, 104px);
+    line-height: 0.96;
+    letter-spacing: -0.02em;
+    margin: 0 0 36px;
+    color: var(--ink);
+    font-variation-settings: "opsz" 144, "SOFT" 50;
+  }
+  h1.display em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--accent);
+  }
+  .hero-sub {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(18px, 1.6vw, 22px);
+    line-height: 1.45;
+    color: var(--ink-soft);
+    max-width: 640px;
+    margin: 0 0 40px;
+  }
+  .hero-sub em {
+    font-style: italic;
+    color: var(--accent-ink);
+  }
+  .cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px 28px;
+    align-items: center;
+  }
+  .btn {
+    display: inline-block;
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    padding: 14px 24px;
+    border: 1px solid var(--ink);
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: 999px;
+    transition: background .15s ease, color .15s ease;
+  }
+  .btn:hover { background: var(--accent); border-color: var(--accent); text-decoration: none; }
+  .btn-ghost {
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid var(--ink);
+  }
+  .btn-ghost:hover { background: var(--ink); color: var(--paper); }
+
+  .hero-meta {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 28px;
+    margin-top: 72px;
+    padding-top: 28px;
+    border-top: 1px solid var(--hair);
+  }
+  .hero-meta-item {
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 16px;
+    align-items: start;
+  }
+  .hero-meta-item .num {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 18px;
+    color: var(--accent);
+    line-height: 1.4;
+  }
+  .hero-meta-item p {
+    margin: 0;
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.5;
+    max-width: 320px;
+  }
+  .hero-meta-item p strong { color: var(--ink); font-weight: 500; }
+
+  /* approach */
+  .section {
+    padding: 96px 0;
+    border-bottom: 1px solid var(--hair);
+  }
+  .section-head {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: 56px;
+  }
+  .section-head h2 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(34px, 4.4vw, 56px);
+    line-height: 1.02;
+    letter-spacing: -0.015em;
+    margin: 0;
+    max-width: 18ch;
+  }
+  .section-head .kicker {
+    margin: 0 0 12px;
+  }
+
+  .approach-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    border-top: 1px solid var(--rule);
+  }
+  .approach-row {
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    gap: 20px;
+    padding: 32px 0;
+    border-bottom: 1px solid var(--hair);
+    align-items: start;
+  }
+  .approach-row .approach-aside {
+    grid-column: 2 / 3;
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px dotted var(--hair);
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 14px;
+    color: var(--muted);
+  }
+  .approach-row .step-num {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 300;
+    font-size: 44px;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .approach-row h3 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: clamp(22px, 2.2vw, 30px);
+    margin: 0 0 10px;
+    letter-spacing: -0.01em;
+  }
+  .approach-row p {
+    margin: 0;
+    color: var(--ink-soft);
+    font-size: 16px;
+    max-width: 56ch;
+  }
+
+  /* examples / carousel */
+  .examples {
+    padding: 96px 0;
+    border-bottom: 1px solid var(--hair);
+  }
+  .examples-head {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: 40px;
+  }
+  .examples-head h2 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(34px, 4.4vw, 56px);
+    line-height: 1;
+    letter-spacing: -0.015em;
+    margin: 0;
+  }
+  .examples-head .annotate {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 14px;
+    color: var(--muted);
+    max-width: 32ch;
+    line-height: 1.4;
+  }
+  .scroller {
+    display: flex;
+    gap: 24px;
+    overflow-x: auto;
+    padding: 8px 28px 32px;
+    margin: 0 -28px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+  .scroller::-webkit-scrollbar { height: 6px; }
+  .scroller::-webkit-scrollbar-track { background: transparent; }
+  .scroller::-webkit-scrollbar-thumb { background: var(--hair); border-radius: 3px; }
+
+  .card {
+    flex: 0 0 auto;
+    width: 320px;
+    scroll-snap-align: start;
+  }
+  .card .card-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin: 16px 2px 0;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+  .card .card-meta .role { color: var(--muted); font-style: normal; letter-spacing: 0.04em; text-transform: none; font-family: var(--serif); font-style: italic; font-size: 14px; }
+  .phone {
+    width: 320px;
+    height: 640px;
+    border-radius: 36px;
+    padding: 14px;
+    background: var(--ink);
+    box-shadow: 0 20px 50px -30px rgba(0,0,0,0.45), 0 4px 12px -8px rgba(0,0,0,0.25);
+  }
+  .phone-screen {
+    width: 100%;
+    height: 100%;
+    border-radius: 24px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* persona: realtor — navy + cream + gold */
+  .persona-realtor {
+    background: #0e1f3a;
+    color: #f3ede0;
+    padding: 28px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    height: 100%;
+  }
+  .persona-realtor .name {
+    font-family: "Fraunces", serif;
+    font-weight: 400;
+    font-size: 26px;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+  }
+  .persona-realtor .role {
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #c8a96a;
+  }
+  .persona-realtor .portrait {
+    flex: 1 1 auto;
+    border-radius: 14px;
+    background:
+      radial-gradient(circle at 30% 28%, #2a4775 0%, #142a4d 45%, #0a1a33 100%);
+    position: relative;
+    overflow: hidden;
+    min-height: 200px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    padding: 14px;
+  }
+  .persona-realtor .portrait::after {
+    content: "";
+    position: absolute;
+    inset: auto 18px 70px auto;
+    width: 90px; height: 90px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #d8c79c 0%, #8c6f3d 70%, #4a3819 100%);
+    opacity: 0.85;
+  }
+  .persona-realtor .portrait .badge {
+    font-family: "Fraunces", serif;
+    font-style: italic;
+    font-size: 12px;
+    color: #f3ede0;
+    background: rgba(0,0,0,0.4);
+    padding: 4px 10px;
+    border-radius: 999px;
+    z-index: 2;
+  }
+  .persona-realtor .actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .persona-realtor .action {
+    border: 1px solid rgba(243,237,224,0.2);
+    border-radius: 10px;
+    padding: 10px 12px;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    color: #f3ede0;
+  }
+  .persona-realtor .action.primary {
+    background: #c8a96a;
+    color: #0e1f3a;
+    border-color: #c8a96a;
+    font-weight: 600;
+  }
+
+  /* persona: trainer — charcoal + neon lime + white */
+  .persona-trainer {
+    background: #16181a;
+    color: #ffffff;
+    padding: 26px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    height: 100%;
+  }
+  .persona-trainer .role {
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #c8ff36;
+  }
+  .persona-trainer .name {
+    font-family: "Fraunces", serif;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 1.0;
+    letter-spacing: -0.015em;
+  }
+  .persona-trainer .name span { color: #c8ff36; font-style: italic; font-weight: 400; }
+  .persona-trainer .portrait-slot {
+    flex: 1 1 auto;
+    min-height: 220px;
+    border: 1px dashed rgba(255,255,255,0.35);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 14px;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+    background:
+      repeating-linear-gradient(45deg, rgba(255,255,255,0.02) 0 8px, transparent 8px 16px);
+  }
+  .persona-trainer .stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    border-top: 1px solid rgba(255,255,255,0.12);
+    padding-top: 14px;
+  }
+  .persona-trainer .stats .s b {
+    display: block;
+    font-family: "Fraunces", serif;
+    font-weight: 500;
+    font-size: 18px;
+  }
+  .persona-trainer .stats .s span {
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+  }
+  .persona-trainer .cta {
+    background: #c8ff36;
+    color: #16181a;
+    text-align: center;
+    padding: 12px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  /* pricing */
+  .pricing {
+    padding: 96px 0;
+    border-bottom: 1px solid var(--hair);
+  }
+  .price-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    border-top: 1px solid var(--rule);
+  }
+  .price {
+    padding: 36px 0;
+    border-bottom: 1px solid var(--hair);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .price-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .price-name {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: clamp(28px, 3vw, 40px);
+    letter-spacing: -0.01em;
+    margin: 0;
+  }
+  .price-name em {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 300;
+    color: var(--accent);
+    font-size: 0.55em;
+    letter-spacing: 0.02em;
+    margin-left: 14px;
+    vertical-align: middle;
+  }
+  .price-fig {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(28px, 3vw, 40px);
+    letter-spacing: -0.01em;
+  }
+  .price-fig small {
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-left: 8px;
+    font-weight: 500;
+  }
+  .price-includes {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    columns: 1;
+    column-gap: 32px;
+  }
+  .price-includes li {
+    padding: 8px 0 8px 24px;
+    position: relative;
+    font-size: 15px;
+    color: var(--ink-soft);
+    break-inside: avoid;
+    border-top: 1px dotted var(--hair);
+  }
+  .price-includes li:first-child { border-top: 0; }
+  .price-includes li::before {
+    content: "—";
+    position: absolute;
+    left: 0;
+    top: 8px;
+    color: var(--accent);
+  }
+
+  .price-note {
+    margin-top: 36px;
+    padding-top: 28px;
+    border-top: 1px solid var(--hair);
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 18px;
+    color: var(--muted);
+    max-width: 60ch;
+  }
+
+  /* faq */
+  .faq { padding: 96px 0; border-bottom: 1px solid var(--hair); }
+  .faq-list {
+    border-top: 1px solid var(--rule);
+  }
+  details.q {
+    border-bottom: 1px solid var(--hair);
+    padding: 24px 0;
+  }
+  details.q summary {
+    list-style: none;
+    cursor: pointer;
+    display: grid;
+    grid-template-columns: 1fr 28px;
+    gap: 16px;
+    align-items: baseline;
+  }
+  details.q summary::-webkit-details-marker { display: none; }
+  details.q summary h3 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(20px, 2vw, 26px);
+    line-height: 1.25;
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+  details.q summary .toggle {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 22px;
+    color: var(--accent);
+    text-align: right;
+    line-height: 1;
+    transition: transform .2s ease;
+  }
+  details.q[open] summary .toggle { transform: rotate(45deg); }
+  details.q .a {
+    margin-top: 14px;
+    color: var(--ink-soft);
+    font-size: 16px;
+    max-width: 60ch;
+  }
+
+  /* contact strip */
+  .contact {
+    padding: 96px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+    align-items: end;
+  }
+  .contact h2 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(36px, 5vw, 64px);
+    line-height: 1.02;
+    margin: 0;
+    letter-spacing: -0.015em;
+    max-width: 16ch;
+  }
+  .contact h2 em {
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 300;
+  }
+  .contact .annotate {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 16px;
+    color: var(--muted);
+    max-width: 32ch;
+  }
+  .contact .quiet-btn {
+    display: inline-block;
+    border: 1px solid var(--ink);
+    padding: 16px 26px;
+    border-radius: 999px;
+    font-size: 14px;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+    background: transparent;
+    margin-top: 12px;
+  }
+  .contact .quiet-btn:hover { background: var(--ink); color: var(--paper); text-decoration: none; }
+
+  /* footer */
+  footer {
+    padding: 40px 0 56px;
+  }
+  .foot-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    align-items: baseline;
+  }
+  .foot-mark {
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.18em;
+  }
+  .foot-links {
+    display: flex;
+    gap: 22px;
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .foot-copy { font-size: 12px; color: var(--muted); }
+
+  /* desktop layouts */
+  @media (min-width: 800px) {
+    .hero-grid {
+      grid-template-columns: minmax(0, 8fr) minmax(0, 4fr);
+      gap: 64px;
+    }
+    .hero-meta { grid-template-columns: repeat(3, 1fr); gap: 32px; }
+    .hero-side {
+      align-self: end;
+      padding-bottom: 8px;
+    }
+    .hero-side .pull {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 300;
+      font-size: 22px;
+      line-height: 1.35;
+      color: var(--ink-soft);
+      border-left: 1px solid var(--accent);
+      padding-left: 20px;
+      max-width: 28ch;
+    }
+    .hero-side .pull-attr {
+      margin-top: 14px;
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding-left: 20px;
+    }
+
+    .section-head {
+      grid-template-columns: 4fr 8fr;
+      align-items: end;
+      gap: 48px;
+    }
+    .section-head .kicker { margin: 0; }
+    .section-head h2 { grid-column: 1 / 2; }
+    .section-head .lede {
+      grid-column: 2 / 3;
+      font-family: var(--serif);
+      font-weight: 300;
+      font-size: 20px;
+      line-height: 1.45;
+      color: var(--ink-soft);
+      max-width: 56ch;
+      margin: 0;
+    }
+
+    .approach-row {
+      grid-template-columns: 80px 6fr 6fr;
+      gap: 48px;
+      padding: 36px 0;
+    }
+    .approach-row .approach-text { grid-column: 2 / 3; }
+    .approach-row .approach-aside {
+      grid-column: 3 / 4;
+      margin-top: 0;
+      padding-top: 0;
+      border-top: 0;
+      border-left: 1px solid var(--hair);
+      padding-left: 24px;
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 15px;
+      color: var(--muted);
+      align-self: start;
+    }
+
+    .examples-head {
+      grid-template-columns: 4fr 8fr;
+      align-items: end;
+      gap: 48px;
+    }
+    .examples-head .kicker { grid-column: 1 / 2; margin: 0; }
+    .examples-head h2 { grid-column: 1 / 2; }
+    .examples-head .annotate { grid-column: 2 / 3; justify-self: end; text-align: right; max-width: 36ch; }
+
+    .price {
+      grid-template-columns: 4fr 8fr;
+      gap: 48px;
+      padding: 48px 0;
+    }
+    .price-left { grid-column: 1 / 2; }
+    .price-right { grid-column: 2 / 3; }
+    .price-includes { columns: 2; }
+
+    .contact-grid {
+      grid-template-columns: 7fr 5fr;
+      gap: 64px;
+    }
+    .contact .right { justify-self: end; text-align: right; }
+
+    .foot-grid {
+      grid-template-columns: auto 1fr auto;
+      gap: 32px;
+    }
+    .foot-links { justify-self: center; }
+    .foot-copy { justify-self: end; }
+  }
+
+  @media (min-width: 1100px) {
+    .hero { padding: 96px 0 120px; }
+    .hero-grid { grid-template-columns: minmax(0, 9fr) minmax(0, 3fr); }
+  }
+
+  /* small screen tweaks */
+  @media (max-width: 480px) {
+    .wrap { padding: 0 20px; }
+    .hero { padding: 48px 0 64px; }
+    .section, .examples, .pricing, .faq, .contact { padding: 64px 0; }
+    .nav-links { display: none; }
+    .scroller { padding-left: 20px; padding-right: 20px; margin: 0 -20px; }
+    .card, .phone { width: 280px; }
+    .phone { height: 580px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a href="#" class="wordmark" aria-label="Movelle home">MOVELLE</a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#approach">Approach</a>
+      <a href="#examples">Work</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="lang" aria-label="Language">
+      <a href="#" class="active" aria-current="true">EN</a>
+      <span class="sep">/</span>
+      <a href="#">ES</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div class="hero-main">
+          <div class="hero-eyebrow">
+            <span class="dot" aria-hidden="true"></span>
+            <span class="label"><span class="num">№ 01</span>tap.getmovelle.com</span>
+          </div>
+          <h1 class="display">Your contact card, reimagined as a page <em>worth sharing.</em></h1>
+          <p class="hero-sub">Movelle builds you a custom personal page. Your photo, your work, your numbers, your links, lead capture, at <em>yourname.getmovelle.com</em>. Send the link. They tap to call, text, save your contact, or book. The first impression they'll actually remember.</p>
+          <div class="cta-row">
+            <a href="#pricing" class="btn">Get your card</a>
+            <a href="#examples" class="btn btn-ghost">See examples</a>
+          </div>
+        </div>
+        <aside class="hero-side" aria-label="Editor's note">
+          <p class="pull">A page that opens in any browser. No app. No login. Just the link, and a first impression that stays.</p>
+          <p class="pull-attr">Editor's Note</p>
+        </aside>
+      </div>
+
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <span class="num">i.</span>
+          <p><strong>One link.</strong> Texts, AirDrop, QR, email signature, wallet pass.</p>
+        </div>
+        <div class="hero-meta-item">
+          <span class="num">ii.</span>
+          <p><strong>Custom design.</strong> Built for you, not a template you fill in.</p>
+        </div>
+        <div class="hero-meta-item">
+          <span class="num">iii.</span>
+          <p><strong>Always current.</strong> We update copy, photos, and links when you ask.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPROACH -->
+  <section class="section" id="approach">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="kicker label"><span class="num">01 /</span>Approach</p>
+          <h2>Three steps. The work happens on our side.</h2>
+        </div>
+        <p class="lede">You send us the raw material. We design the page. You share the link. The result lives at yourname.getmovelle.com and works in every browser, on every phone, without an app to install.</p>
+      </div>
+
+      <div class="approach-grid">
+        <div class="approach-row">
+          <div class="step-num">i.</div>
+          <div class="approach-text">
+            <h3>Tell us about you.</h3>
+            <p>Photo, brand colors, what you do, who you serve. A short questionnaire and a short call. That's the whole intake.</p>
+          </div>
+          <div class="approach-aside">A studio brief, not a form full of fields you don't understand.</div>
+        </div>
+        <div class="approach-row">
+          <div class="step-num">ii.</div>
+          <div class="approach-text">
+            <h3>We build your page.</h3>
+            <p>Custom design at <em>yourname.getmovelle.com</em>. Not a template. Layout, type, color, motion, all chosen for you.</p>
+          </div>
+          <div class="approach-aside">Designed by hand. Reviewed before it ships.</div>
+        </div>
+        <div class="approach-row">
+          <div class="step-num">iii.</div>
+          <div class="approach-text">
+            <h3>Share the link.</h3>
+            <p>Text, AirDrop, QR, email, wallet pass. They tap to call, text, save your contact, or book. You get the credit for the polish.</p>
+          </div>
+          <div class="approach-aside">One short URL replaces the contact card, the website, and the bio link.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXAMPLES -->
+  <section class="examples" id="examples">
+    <div class="wrap">
+      <div class="examples-head">
+        <p class="kicker label"><span class="num">02 /</span>Recent work</p>
+        <h2>Recent work.</h2>
+        <p class="annotate">Two pages from the studio. Each built for a different person, in their own palette, on the same Movelle frame.</p>
+      </div>
+    </div>
+
+    <div class="wrap">
+      <div class="scroller" role="list">
+        <!-- realtor -->
+        <article class="card" role="listitem" aria-label="Alex Rivera, Realtor">
+          <div class="phone">
+            <div class="phone-screen">
+              <div class="persona-realtor">
+                <div>
+                  <div class="role">Realtor · Licensed</div>
+                  <div class="name">Alex<br/>Rivera</div>
+                </div>
+                <div class="portrait" aria-hidden="true">
+                  <span class="badge">Now showing · 3 listings</span>
+                </div>
+                <div class="actions">
+                  <div class="action primary">Call</div>
+                  <div class="action">Text</div>
+                  <div class="action">Save contact</div>
+                  <div class="action">Book a tour</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-meta">
+            <span>ALEX RIVERA</span>
+            <span class="role">Realtor</span>
+          </div>
+        </article>
+
+        <!-- trainer -->
+        <article class="card" role="listitem" aria-label="Jamie Chen, Coach">
+          <div class="phone">
+            <div class="phone-screen">
+              <div class="persona-trainer">
+                <div>
+                  <div class="role">Strength Coach</div>
+                  <div class="name">Jamie <span>Chen.</span></div>
+                </div>
+                <div class="portrait-slot" role="img" aria-label="Portrait placeholder">
+                  PORTRAIT GOES HERE
+                </div>
+                <div class="stats">
+                  <div class="s"><b>1:1</b><span>Coaching</span></div>
+                  <div class="s"><b>8 wk</b><span>Programs</span></div>
+                  <div class="s"><b>Online</b><span>Or in person</span></div>
+                </div>
+                <div class="cta">Book a free intro</div>
+              </div>
+            </div>
+          </div>
+          <div class="card-meta">
+            <span>JAMIE CHEN</span>
+            <span class="role">Coach</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing" id="pricing">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="kicker label"><span class="num">03 /</span>Pricing</p>
+          <h2>One setup fee. One flat monthly. No tiers on hosting.</h2>
+        </div>
+        <p class="lede">Three setup tiers depending on how much page you want built. The monthly is the same across all of them: twelve dollars, every month, for the door staying open.</p>
+      </div>
+
+      <div class="price-grid">
+
+        <article class="price">
+          <div class="price-left">
+            <div class="price-head">
+              <h3 class="price-name">Essential</h3>
+              <div class="price-fig">$350<small>setup</small></div>
+            </div>
+            <p style="font-family:var(--serif);font-style:italic;color:var(--muted);margin:8px 0 0;">For one page that does the job, beautifully.</p>
+          </div>
+          <div class="price-right">
+            <ul class="price-includes">
+              <li>Single-page custom design at yourname.getmovelle.com</li>
+              <li>Your photo and brand color</li>
+              <li>Up to 4 actions. Call, text, email, save</li>
+              <li>QR code</li>
+              <li>2 content refreshes</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="price">
+          <div class="price-left">
+            <div class="price-head">
+              <h3 class="price-name">Signature <em>Most popular</em></h3>
+              <div class="price-fig">$650<small>setup</small></div>
+            </div>
+            <p style="font-family:var(--serif);font-style:italic;color:var(--muted);margin:8px 0 0;">A full page with sections, a form, and your own domain.</p>
+          </div>
+          <div class="price-right">
+            <ul class="price-includes">
+              <li>Multi-section page. About, services, gallery, testimonials, contact</li>
+              <li>Up to 12 actions and links</li>
+              <li>Email lead-capture form</li>
+              <li>Tasteful motion</li>
+              <li>Custom domain or premium subdomain</li>
+              <li>Basic analytics</li>
+              <li>Wallet pass</li>
+              <li>8 content refreshes</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="price">
+          <div class="price-left">
+            <div class="price-head">
+              <h3 class="price-name">Premier</h3>
+              <div class="price-fig">$1,400<small>setup</small></div>
+            </div>
+            <p style="font-family:var(--serif);font-style:italic;color:var(--muted);margin:8px 0 0;">Bespoke. Bilingual. Everything custom.</p>
+          </div>
+          <div class="price-right">
+            <ul class="price-includes">
+              <li>Fully bespoke layout</li>
+              <li>Up to 3 pages</li>
+              <li>Custom animations</li>
+              <li>Full bilingual EN and ES</li>
+              <li>Premium custom domain</li>
+              <li>Custom email setup. yourname@yourcompany.com</li>
+              <li>Advanced analytics with monthly performance summary</li>
+              <li>20 content refreshes</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+
+      <p class="price-note">Monthly $12 across all tiers. Covers hosting, security, and the door staying open.</p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="kicker label"><span class="num">04 /</span>Questions</p>
+          <h2>The short answers.</h2>
+        </div>
+        <p class="lede">Four things people ask before they decide. If you have a fifth, the email is at the bottom of the page.</p>
+      </div>
+
+      <div class="faq-list">
+        <details class="q" open>
+          <summary>
+            <h3>Do I need an app?</h3>
+            <span class="toggle" aria-hidden="true">+</span>
+          </summary>
+          <p class="a">No. It's a web page. They open the link in any browser.</p>
+        </details>
+        <details class="q">
+          <summary>
+            <h3>How do I share it?</h3>
+            <span class="toggle" aria-hidden="true">+</span>
+          </summary>
+          <p class="a">Text it, AirDrop it, scan the QR, drop it in your email signature, or add it to your phone wallet.</p>
+        </details>
+        <details class="q">
+          <summary>
+            <h3>Can I update it?</h3>
+            <span class="toggle" aria-hidden="true">+</span>
+          </summary>
+          <p class="a">Yes. Send us what to change. Refreshes are included per tier. Extras are billed.</p>
+        </details>
+        <details class="q">
+          <summary>
+            <h3>What if I want a custom domain?</h3>
+            <span class="toggle" aria-hidden="true">+</span>
+          </summary>
+          <p class="a">Included with Signature and Premier.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact">
+    <div class="wrap">
+      <div class="contact-grid">
+        <div>
+          <p class="kicker label" style="margin-bottom:18px;"><span class="num">05 /</span>Inquiries</p>
+          <h2>Tell us who you are. We'll send back a sketch.</h2>
+        </div>
+        <div class="right">
+          <p class="annotate">No form. No funnel. Just an email that reaches a person.</p>
+          <a href="mailto:hello@getmovelle.com" class="quiet-btn">Email us. hello@getmovelle.com</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <hr class="hair" style="margin-bottom:32px;" />
+    <div class="foot-grid">
+      <span class="foot-mark">MOVELLE</span>
+      <div class="foot-links">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="mailto:hello@getmovelle.com">Contact</a>
+      </div>
+      <span class="foot-copy">© <span id="yr"></span> Movelle. All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>

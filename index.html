@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Movelle</title>
+<script>
+  (function () {
+    var lang = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
+    var dest = lang.indexOf('es') === 0 ? '/es/' : '/en/';
+    // Use current origin so it works on any host (elliot.najera.cc preview or tap.getmovelle.com)
+    window.location.replace(window.location.origin + '/tap-getmovelle' + dest + 'index.html');
+  })();
+</script>
+<style>
+  body { font-family: system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif; margin: 0; display: flex; align-items: center; justify-content: center; height: 100vh; background: #f6f3ee; color: #1a1815; }
+  .pick { text-align: center; }
+  .pick a { display: block; margin: 12px 0; font-size: 18px; color: #b8862d; text-decoration: none; letter-spacing: .1em; }
+  .pick a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<noscript>
+  <div class="pick">
+    <p style="font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:#6b655c;margin-bottom:24px;">MOVELLE</p>
+    <a href="/tap-getmovelle/en/index.html">English</a>
+    <a href="/tap-getmovelle/es/index.html">Español</a>
+  </div>
+</noscript>
+</body>
+</html>

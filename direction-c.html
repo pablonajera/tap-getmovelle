@@ -1,0 +1,787 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Movelle — Your contact card, reimagined as a page worth sharing</title>
+<meta name="description" content="Movelle builds you a custom personal page at yourname.getmovelle.com. Send the link. They tap to call, text, save your contact, or book." />
+<meta property="og:title" content="Movelle — Your contact card, reimagined" />
+<meta property="og:description" content="A custom personal page at yourname.getmovelle.com. Send the link. They tap to call, text, save, book." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://tap.getmovelle.com/" />
+<meta name="twitter:card" content="summary_large_image" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:#fefefe;
+    --ink:#000;
+    --accent:#ff3d7f;
+    --yellow:#f5e84a;
+    --rule:3px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--bg);color:var(--ink);}
+  body{
+    font-family:'Inter',system-ui,sans-serif;
+    font-size:17px;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  a{color:inherit;text-decoration:none}
+  img,svg{display:block;max-width:100%}
+  button{font:inherit;cursor:pointer;border:none;background:none;color:inherit}
+
+  .mono{font-family:'JetBrains Mono',ui-monospace,monospace;}
+  .upper{text-transform:uppercase;letter-spacing:.12em}
+
+  /* layout primitives */
+  .wrap{max-width:1320px;margin:0 auto;padding:0 24px}
+  .rule-t{border-top:var(--rule) solid var(--ink)}
+  .rule-b{border-bottom:var(--rule) solid var(--ink)}
+
+  /* nav */
+  .nav{
+    position:sticky;top:0;z-index:50;
+    background:var(--bg);
+    border-bottom:var(--rule) solid var(--ink);
+  }
+  .nav-row{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:18px 24px;
+    max-width:1320px;margin:0 auto;
+  }
+  .brand{
+    font-family:'JetBrains Mono',monospace;
+    font-weight:800;
+    letter-spacing:.18em;
+    font-size:18px;
+  }
+  .nav-actions{display:flex;align-items:center;gap:12px}
+  @media (max-width:520px){
+    .nav-cta{display:none}
+    .nav-row{padding:14px 18px}
+  }
+  .lang{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;letter-spacing:.18em;
+    display:flex;gap:0;
+    border:2px solid var(--ink);
+  }
+  .lang a{
+    padding:6px 10px;
+    border-right:2px solid var(--ink);
+  }
+  .lang a:last-child{border-right:none}
+  .lang a.on{background:var(--ink);color:var(--bg)}
+  .nav-cta{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+    border:2px solid var(--ink);
+    padding:8px 14px;font-weight:700;
+    background:var(--accent);color:var(--ink);
+  }
+  .nav-cta:hover{background:var(--ink);color:var(--bg)}
+
+  /* hero */
+  .hero{
+    padding:64px 0 0;
+    border-bottom:var(--rule) solid var(--ink);
+    position:relative;overflow:hidden;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:32px;
+    padding-bottom:64px;
+  }
+  .eyebrow{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;letter-spacing:.22em;text-transform:uppercase;
+    display:inline-flex;align-items:center;gap:10px;
+    border:2px solid var(--ink);padding:6px 10px;
+  }
+  .eyebrow .dot{width:8px;height:8px;background:var(--accent);display:inline-block}
+  h1.hero-h{
+    font-family:'JetBrains Mono',monospace;
+    font-weight:800;
+    font-size:clamp(40px,7.6vw,108px);
+    line-height:.94;
+    letter-spacing:-.02em;
+    margin-top:24px;
+    word-break:break-word;
+    hyphens:none;
+  }
+  h1.hero-h .accent{color:var(--accent)}
+  h1.hero-h em{
+    font-style:normal;
+    background:var(--yellow);
+    padding:0 .12em;
+    box-decoration-break:clone;
+    -webkit-box-decoration-break:clone;
+  }
+  .hero-sub{
+    font-size:clamp(17px,1.6vw,22px);
+    line-height:1.45;
+    max-width:780px;
+    margin-top:28px;
+  }
+  .hero-sub em{font-style:normal;font-weight:600;border-bottom:2px solid var(--ink);padding-bottom:1px}
+  .hero-ctas{
+    display:flex;flex-wrap:wrap;gap:0;
+    margin-top:36px;
+    border:var(--rule) solid var(--ink);
+    width:fit-content;
+  }
+  .btn{
+    font-family:'JetBrains Mono',monospace;
+    font-size:14px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;
+    padding:18px 26px;
+    display:inline-flex;align-items:center;gap:10px;
+  }
+  .btn-primary{background:var(--accent);color:var(--ink);border-right:var(--rule) solid var(--ink)}
+  .btn-primary:hover{background:var(--ink);color:var(--bg)}
+  .btn-secondary{background:var(--bg);color:var(--ink)}
+  .btn-secondary:hover{background:var(--ink);color:var(--bg)}
+  .btn .arr{font-weight:800}
+
+  /* hero meta strip */
+  .hero-meta{
+    border-top:var(--rule) solid var(--ink);
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  }
+  .hero-meta div{padding:14px 18px;border-right:var(--rule) solid var(--ink);border-bottom:var(--rule) solid var(--ink)}
+  .hero-meta div:nth-child(2n){border-right:none}
+  @media (min-width:900px){
+    .hero-meta div{border-bottom:none;border-right:var(--rule) solid var(--ink)}
+    .hero-meta div:nth-child(2n){border-right:var(--rule) solid var(--ink)}
+    .hero-meta div:last-child{border-right:none}
+  }
+  .hero-meta b{font-weight:700}
+
+  /* phone preview floating in hero */
+  .hero-preview{
+    border:var(--rule) solid var(--ink);
+    background:var(--yellow);
+    padding:28px;
+    position:relative;
+  }
+  .hero-preview .url{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;letter-spacing:.1em;
+    background:var(--ink);color:var(--bg);
+    display:inline-block;padding:6px 10px;
+    margin-bottom:18px;
+  }
+  .phone{
+    background:var(--bg);
+    border:var(--rule) solid var(--ink);
+    padding:18px;
+    max-width:300px;margin:0 auto;
+  }
+  .phone .ph-img{
+    aspect-ratio:1/1;
+    background:#111;
+    border:2px solid var(--ink);
+    display:flex;align-items:flex-end;justify-content:flex-start;
+    padding:10px;
+    color:var(--bg);
+    font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.18em;
+    background:
+      linear-gradient(135deg,#1a1a1a 0%,#2a2a2a 100%);
+  }
+  .phone h3{
+    font-family:'JetBrains Mono',monospace;
+    font-size:22px;line-height:1;margin-top:14px;font-weight:800;
+  }
+  .phone .role{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+    margin-top:6px;
+  }
+  .phone .acts{
+    margin-top:14px;display:grid;gap:8px;
+  }
+  .phone .act{
+    border:2px solid var(--ink);
+    padding:10px 12px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;
+    display:flex;justify-content:space-between;align-items:center;
+  }
+  .phone .act.primary{background:var(--accent)}
+
+  @media (min-width:900px){
+    .hero-grid{
+      grid-template-columns:1.45fr .85fr;
+      gap:48px;
+      align-items:end;
+    }
+    .hero-preview{align-self:end}
+    .hero-meta{grid-template-columns:repeat(4,1fr)}
+  }
+
+  /* section heading */
+  .sec-head{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:6px;
+    padding:28px 24px;
+    border-bottom:var(--rule) solid var(--ink);
+    align-items:end;
+  }
+  .sec-head .num{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;letter-spacing:.22em;text-transform:uppercase;
+  }
+  .sec-head h2{
+    font-family:'JetBrains Mono',monospace;
+    font-weight:800;
+    font-size:clamp(36px,5.5vw,64px);
+    line-height:.95;letter-spacing:-.01em;
+  }
+  @media (min-width:900px){
+    .sec-head{grid-template-columns:200px 1fr;gap:24px}
+  }
+
+  /* HOW */
+  .how{background:var(--yellow);border-bottom:var(--rule) solid var(--ink)}
+  .how .sec-head{border-bottom:var(--rule) solid var(--ink)}
+  .steps{
+    display:grid;grid-template-columns:1fr;
+  }
+  .step{
+    padding:32px 24px;
+    border-bottom:var(--rule) solid var(--ink);
+    display:grid;grid-template-columns:64px 1fr;gap:20px;align-items:start;
+  }
+  .step:last-child{border-bottom:none}
+  .step .n{
+    font-family:'JetBrains Mono',monospace;
+    font-weight:800;
+    font-size:48px;line-height:1;
+  }
+  .step h3{
+    font-family:'JetBrains Mono',monospace;
+    font-weight:800;font-size:24px;line-height:1.1;margin-bottom:8px;
+  }
+  .step p{font-size:17px;max-width:60ch}
+  @media (min-width:900px){
+    .steps{grid-template-columns:repeat(3,1fr)}
+    .step{border-bottom:none;border-right:var(--rule) solid var(--ink)}
+    .step:last-child{border-right:none}
+  }
+
+  /* EXAMPLES */
+  .examples{border-bottom:var(--rule) solid var(--ink)}
+  .ex-rail{
+    display:grid;grid-template-columns:1fr;gap:0;
+  }
+  .ex{
+    border-bottom:var(--rule) solid var(--ink);
+    padding:32px 24px;
+  }
+  .ex:last-child{border-bottom:none}
+  @media (min-width:900px){
+    .ex-rail{grid-template-columns:1fr 1fr}
+    .ex{border-bottom:none;border-right:var(--rule) solid var(--ink)}
+    .ex:last-child{border-right:none}
+  }
+  .ex-meta{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;letter-spacing:.18em;text-transform:uppercase;
+    display:flex;justify-content:space-between;
+    margin-bottom:18px;
+  }
+
+  /* persona: realtor */
+  .persona{
+    border:var(--rule) solid var(--ink);
+    padding:0;
+    overflow:hidden;
+  }
+  .realtor{background:#0e1a35;color:#f4ecd8}
+  .realtor .top{
+    padding:22px 22px 0;
+    display:flex;justify-content:space-between;align-items:flex-start;
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+  }
+  .realtor .top .gold{color:#c9a96a}
+  .realtor .face{
+    margin:18px 22px 0;
+    aspect-ratio:4/3;
+    background:
+      radial-gradient(circle at 30% 35%, #f4ecd8 0 14%, transparent 15%),
+      radial-gradient(ellipse at 50% 95%, #c9a96a 0 38%, transparent 39%),
+      linear-gradient(135deg,#1a2a4a,#0a1226);
+    border:2px solid #c9a96a;
+    position:relative;
+  }
+  .realtor h4{
+    font-family:'Inter',serif;
+    font-weight:700;
+    font-size:32px;line-height:1;
+    padding:18px 22px 0;
+    letter-spacing:-.01em;
+  }
+  .realtor .role{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+    color:#c9a96a;
+    padding:6px 22px 0;
+  }
+  .realtor .actions{padding:18px 22px 22px;display:grid;gap:8px}
+  .realtor .act{
+    border:1.5px solid #c9a96a;
+    padding:11px 13px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;letter-spacing:.18em;text-transform:uppercase;
+    display:flex;justify-content:space-between;
+    color:#f4ecd8;
+  }
+  .realtor .act.primary{background:#c9a96a;color:#0e1a35;font-weight:700;border-color:#c9a96a}
+
+  /* persona: trainer */
+  .trainer{background:#1c1c1c;color:#fff}
+  .trainer .top{
+    padding:22px 22px 0;
+    display:flex;justify-content:space-between;align-items:flex-start;
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+  }
+  .trainer .top .lime{color:#c8ff00}
+  .trainer .face{
+    margin:18px 22px 0;
+    aspect-ratio:4/3;
+    background:
+      repeating-linear-gradient(45deg,#2a2a2a 0 12px,#222 12px 24px);
+    border:2px solid #c8ff00;
+    display:flex;align-items:center;justify-content:center;
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+    color:#c8ff00;
+  }
+  .trainer h4{
+    font-family:'JetBrains Mono',monospace;
+    font-weight:800;
+    font-size:30px;line-height:1;
+    padding:18px 22px 0;
+    text-transform:uppercase;letter-spacing:-.01em;
+  }
+  .trainer .role{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+    color:#c8ff00;padding:6px 22px 0;
+  }
+  .trainer .actions{padding:18px 22px 22px;display:grid;gap:8px}
+  .trainer .act{
+    border:2px solid #fff;
+    padding:11px 13px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;letter-spacing:.18em;text-transform:uppercase;
+    display:flex;justify-content:space-between;
+  }
+  .trainer .act.primary{background:#c8ff00;color:#1c1c1c;font-weight:700;border-color:#c8ff00}
+
+  /* PRICING */
+  .pricing{border-bottom:var(--rule) solid var(--ink);background:var(--bg)}
+  .price-grid{
+    display:grid;grid-template-columns:1fr;
+  }
+  .price{
+    padding:28px 24px;
+    border-bottom:var(--rule) solid var(--ink);
+    display:flex;flex-direction:column;
+    position:relative;
+  }
+  .price:last-child{border-bottom:none}
+  @media (min-width:900px){
+    .price-grid{grid-template-columns:repeat(3,1fr)}
+    .price{border-bottom:none;border-right:var(--rule) solid var(--ink)}
+    .price:last-child{border-right:none}
+  }
+  .price .tier{
+    font-family:'JetBrains Mono',monospace;
+    font-size:14px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;
+  }
+  .price .amount{
+    font-family:'JetBrains Mono',monospace;
+    font-weight:800;
+    font-size:64px;line-height:1;
+    margin-top:14px;letter-spacing:-.02em;
+  }
+  .price .amount sup{font-size:22px;vertical-align:top;font-weight:700;letter-spacing:0}
+  .price .setup-meta{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;letter-spacing:.18em;text-transform:uppercase;
+    margin-top:6px;
+  }
+  .price .monthly{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+    border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);
+    padding:10px 0;margin-top:18px;
+    display:flex;justify-content:space-between;
+  }
+  .price ul{
+    list-style:none;margin-top:18px;display:grid;gap:10px;
+    flex:1;
+  }
+  .price li{
+    font-size:15px;line-height:1.4;
+    padding-left:22px;position:relative;
+  }
+  .price li::before{
+    content:"+";
+    position:absolute;left:0;top:0;
+    font-family:'JetBrains Mono',monospace;font-weight:800;
+  }
+  .price .pbtn{
+    font-family:'JetBrains Mono',monospace;
+    font-size:13px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;
+    border:var(--rule) solid var(--ink);
+    padding:14px 18px;margin-top:24px;
+    text-align:center;
+    background:var(--bg);
+  }
+  .price .pbtn:hover{background:var(--ink);color:var(--bg)}
+  .price.feat{background:var(--ink);color:var(--bg)}
+  .price.feat li::before{color:var(--accent)}
+  .price.feat .monthly{border-color:var(--bg)}
+  .price.feat .pbtn{background:var(--accent);color:var(--ink);border-color:var(--accent)}
+  .price.feat .pbtn:hover{background:var(--bg);color:var(--ink);border-color:var(--bg)}
+  .sticker{
+    position:absolute;
+    top:-2px;right:-2px;
+    max-width:calc(100% + 4px);
+    background:var(--accent);
+    color:var(--ink);
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:800;
+    padding:8px 12px;
+    border:var(--rule) solid var(--ink);
+    transform:rotate(0deg);
+  }
+  .price-foot{
+    border-top:var(--rule) solid var(--ink);
+    padding:18px 24px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:13px;letter-spacing:.1em;text-transform:uppercase;
+    text-align:center;
+  }
+
+  /* FAQ */
+  .faq{border-bottom:var(--rule) solid var(--ink)}
+  .faq-list{}
+  .faq-item{
+    border-bottom:var(--rule) solid var(--ink);
+    padding:24px;
+    display:grid;grid-template-columns:1fr;gap:8px;
+  }
+  .faq-item:last-child{border-bottom:none}
+  @media (min-width:900px){
+    .faq-item{grid-template-columns:1fr 2fr;gap:32px;align-items:start}
+  }
+  .faq-q{
+    font-family:'JetBrains Mono',monospace;
+    font-weight:800;
+    font-size:22px;line-height:1.15;
+  }
+  .faq-a{font-size:17px;line-height:1.5;max-width:65ch}
+
+  /* CTA strip */
+  .cta-strip{
+    background:var(--accent);
+    border-bottom:var(--rule) solid var(--ink);
+    padding:48px 24px;
+    text-align:center;
+  }
+  .cta-strip h2{
+    font-family:'JetBrains Mono',monospace;
+    font-weight:800;
+    font-size:clamp(28px,4.5vw,52px);
+    line-height:1;letter-spacing:-.01em;
+  }
+  .cta-strip a.email{
+    display:inline-block;
+    margin-top:20px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:14px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;
+    background:var(--ink);color:var(--bg);
+    padding:16px 22px;
+    border:var(--rule) solid var(--ink);
+  }
+  .cta-strip a.email:hover{background:var(--bg);color:var(--ink)}
+
+  /* footer */
+  footer{background:var(--ink);color:var(--bg);padding:48px 24px 28px}
+  .foot-wrap{max-width:1320px;margin:0 auto}
+  .foot-mark{
+    font-family:'JetBrains Mono',monospace;
+    font-weight:800;
+    letter-spacing:.04em;
+    font-size:clamp(72px,18vw,260px);
+    line-height:.85;
+    border-bottom:3px solid var(--bg);
+    padding-bottom:20px;
+  }
+  .foot-row{
+    display:flex;flex-wrap:wrap;justify-content:space-between;gap:18px;
+    padding-top:20px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;letter-spacing:.18em;text-transform:uppercase;
+  }
+  .foot-row .links{display:flex;gap:18px;flex-wrap:wrap}
+  .foot-row a:hover{color:var(--accent)}
+
+  /* selection */
+  ::selection{background:var(--accent);color:var(--ink)}
+</style>
+</head>
+<body>
+
+<header class="nav" role="banner">
+  <div class="nav-row">
+    <a href="#" class="brand" aria-label="Movelle home">MOVELLE</a>
+    <nav class="nav-actions" aria-label="Primary">
+      <div class="lang" role="group" aria-label="Language">
+        <a href="#" class="on" aria-current="true">EN</a>
+        <a href="#" aria-label="Switch to Spanish">ES</a>
+      </div>
+      <a href="#pricing" class="nav-cta">Get your card →</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <span class="eyebrow"><span class="dot"></span> tap.getmovelle.com</span>
+        <h1 class="hero-h">Your contact card, <em>reimagined</em> as a page worth <span class="accent">sharing.</span></h1>
+        <p class="hero-sub">Movelle builds you a custom personal page — your photo, your work, your numbers, your links, lead capture — at <em>yourname.getmovelle.com</em>. Send the link. They tap to call, text, save your contact, or book. The first impression they'll actually remember.</p>
+        <div class="hero-ctas" role="group" aria-label="Primary actions">
+          <a href="#pricing" class="btn btn-primary">Get your card <span class="arr">→</span></a>
+          <a href="#examples" class="btn btn-secondary">See examples</a>
+        </div>
+      </div>
+
+      <aside class="hero-preview" aria-label="Preview of a Movelle page">
+        <span class="url">alex.getmovelle.com</span>
+        <div class="phone">
+          <div class="ph-img">PORTRAIT</div>
+          <h3>Alex Rivera</h3>
+          <div class="role">Realtor / Coastal Group</div>
+          <div class="acts">
+            <div class="act primary"><span>Call</span><span>→</span></div>
+            <div class="act"><span>Text</span><span>→</span></div>
+            <div class="act"><span>Save contact</span><span>→</span></div>
+            <div class="act"><span>Book a tour</span><span>→</span></div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <div class="hero-meta">
+    <div><b>01</b> &nbsp; Custom design</div>
+    <div><b>02</b> &nbsp; Yourname.getmovelle.com</div>
+    <div><b>03</b> &nbsp; Tap to call / text / save</div>
+    <div><b>04</b> &nbsp; Built in days, not weeks</div>
+  </div>
+</section>
+
+<section class="how" id="how">
+  <div class="sec-head">
+    <span class="num">[ 01 ] How it works</span>
+    <h2>Three steps. Nothing weird.</h2>
+  </div>
+  <div class="steps">
+    <article class="step">
+      <div class="n">01</div>
+      <div>
+        <h3>Tell us about you.</h3>
+        <p>Photo, brand colors, what you do, who you serve.</p>
+      </div>
+    </article>
+    <article class="step">
+      <div class="n">02</div>
+      <div>
+        <h3>We build your page.</h3>
+        <p>Custom design at yourname.getmovelle.com — not a template.</p>
+      </div>
+    </article>
+    <article class="step">
+      <div class="n">03</div>
+      <div>
+        <h3>Share the link.</h3>
+        <p>Text, AirDrop, QR, email, wallet pass. They tap to call, text, save, book.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="examples" id="examples">
+  <div class="sec-head">
+    <span class="num">[ 02 ] Recent work</span>
+    <h2>Pages, not templates.</h2>
+  </div>
+  <div class="ex-rail">
+    <div class="ex">
+      <div class="ex-meta"><span>Realtor / Coastal</span><span>alex.getmovelle.com</span></div>
+      <div class="persona realtor" role="img" aria-label="Mockup of Alex Rivera realtor page">
+        <div class="top"><span>MOVELLE</span><span class="gold">★ COASTAL</span></div>
+        <div class="face" aria-hidden="true"></div>
+        <h4>Alex Rivera</h4>
+        <div class="role">Realtor · Coastal Group</div>
+        <div class="actions">
+          <div class="act primary"><span>Call Alex</span><span>→</span></div>
+          <div class="act"><span>Text</span><span>→</span></div>
+          <div class="act"><span>Save contact</span><span>→</span></div>
+          <div class="act"><span>Book a tour</span><span>→</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="ex">
+      <div class="ex-meta"><span>Personal trainer</span><span>jamie.getmovelle.com</span></div>
+      <div class="persona trainer" role="img" aria-label="Mockup of Jamie Chen coach page">
+        <div class="top"><span>MOVELLE</span><span class="lime">// COACH</span></div>
+        <div class="face" aria-hidden="true">PORTRAIT GOES HERE</div>
+        <h4>Jamie Chen</h4>
+        <div class="role">Coach · Strength &amp; Conditioning</div>
+        <div class="actions">
+          <div class="act primary"><span>Book a session</span><span>→</span></div>
+          <div class="act"><span>Text Jamie</span><span>→</span></div>
+          <div class="act"><span>Programs</span><span>→</span></div>
+          <div class="act"><span>Save contact</span><span>→</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pricing" id="pricing">
+  <div class="sec-head">
+    <span class="num">[ 03 ] Pricing</span>
+    <h2>One setup. $12 a month. That's it.</h2>
+  </div>
+  <div class="price-grid">
+
+    <article class="price">
+      <div class="tier">Essential</div>
+      <div class="amount"><sup>$</sup>350</div>
+      <div class="setup-meta">One-time setup</div>
+      <div class="monthly"><span>Monthly</span><span>$12</span></div>
+      <ul>
+        <li>Single-page custom design at yourname.getmovelle.com</li>
+        <li>Your photo + brand color</li>
+        <li>Up to 4 actions (call, text, email, save)</li>
+        <li>QR code</li>
+        <li>2 content refreshes</li>
+      </ul>
+      <a href="mailto:hello@getmovelle.com?subject=Essential" class="pbtn">Choose Essential →</a>
+    </article>
+
+    <article class="price feat">
+      <span class="sticker">★ Most popular</span>
+      <div class="tier">Signature</div>
+      <div class="amount"><sup>$</sup>650</div>
+      <div class="setup-meta">One-time setup</div>
+      <div class="monthly"><span>Monthly</span><span>$12</span></div>
+      <ul>
+        <li>Multi-section page (about, services, gallery, testimonials, contact)</li>
+        <li>Up to 12 actions and links</li>
+        <li>Email lead-capture form</li>
+        <li>Tasteful motion</li>
+        <li>Custom domain or premium subdomain</li>
+        <li>Basic analytics</li>
+        <li>Wallet pass</li>
+        <li>8 content refreshes</li>
+      </ul>
+      <a href="mailto:hello@getmovelle.com?subject=Signature" class="pbtn">Choose Signature →</a>
+    </article>
+
+    <article class="price">
+      <div class="tier">Premier</div>
+      <div class="amount"><sup>$</sup>1,400</div>
+      <div class="setup-meta">One-time setup</div>
+      <div class="monthly"><span>Monthly</span><span>$12</span></div>
+      <ul>
+        <li>Fully bespoke layout</li>
+        <li>Up to 3 pages</li>
+        <li>Custom animations</li>
+        <li>Full bilingual EN / ES</li>
+        <li>Premium custom domain</li>
+        <li>Custom email setup (yourname@yourcompany.com)</li>
+        <li>Advanced analytics + monthly performance summary</li>
+        <li>20 content refreshes</li>
+      </ul>
+      <a href="mailto:hello@getmovelle.com?subject=Premier" class="pbtn">Choose Premier →</a>
+    </article>
+
+  </div>
+  <div class="price-foot">Monthly $12 across all tiers — covers hosting, security, and the door staying open.</div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="sec-head">
+    <span class="num">[ 04 ] FAQ</span>
+    <h2>The usual questions.</h2>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-q">Do I need an app?</div>
+      <div class="faq-a">No. It's a web page. They open the link in any browser.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How do I share it?</div>
+      <div class="faq-a">Text, AirDrop, QR, email signature, phone wallet.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can I update it?</div>
+      <div class="faq-a">Yes. Refreshes included per tier; extras billed.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Custom domain?</div>
+      <div class="faq-a">Included with Signature and Premier.</div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-strip" id="contact">
+  <h2>Ready to send a link people remember?</h2>
+  <a class="email" href="mailto:hello@getmovelle.com">Email us — hello@getmovelle.com</a>
+</section>
+
+</main>
+
+<footer>
+  <div class="foot-wrap">
+    <div class="foot-mark">MOVELLE</div>
+    <div class="foot-row">
+      <span>© <span id="yr">2025</span> Movelle</span>
+      <div class="links">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="mailto:hello@getmovelle.com">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
